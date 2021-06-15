@@ -9,6 +9,6 @@ Each type of question offers different ways to provide feedback to help users un
 
 ## Multiple/Many Choice Questions
 
-Multiple/Many Choice questions are defined by a Question, an optional Precision an optional Code block, and a list of possible Answers, which include details on whether the Answer is correct and Feedback to be displayed for that Answer. The schema for Multiple/Many Choice Questions is shown below:
+Multiple/Many Choice questions are defined by a Question, an optional Precision an optional Code block, and a list of possible Answers, which include details on whether the Answer is correct and Feedback to be displayed for that Answer. The schema for Multiple/Many Choice Questions is shown below (Code blocks not yet shown):
   ![Schema for Multiple/Many Choice Questions in JupyterQuiz](schema/mc_schema.png)
 
