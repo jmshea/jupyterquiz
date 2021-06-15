@@ -1,2 +1,2 @@
 # jupyterquiz
-An interactive Quiz generator for Jupyter notebooks and Jupyter Book 
+A tool for displaying interactive Quizes in Jupyter notebooks and Jupyter Book
