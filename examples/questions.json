@@ -1,0 +1,147 @@
+[
+    {
+        "question": "Choose all of the following that can be included in Jupyter notebooks?",
+        "type": "many_choice",
+        "answers": [
+            {
+                "answer": "Text and graphics output from Python",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Typeset mathematics",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Python executable code",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Formatted text",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Live snakes via Python",
+                "correct": false,
+                "feedback": "I hope not."
+            }
+        ]
+    },
+    {
+        "question": "Which of these are used to create formatted text in Jupyter notebooks?",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "Wiki markup",
+                "correct": false,
+                "feedback": "False."
+            },
+            {
+                "answer": "SVG",
+                "correct": false,
+                "feedback": "False."
+            },
+            {
+                "answer": "Markdown",
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "answer": "Rich Text",
+                "correct": false,
+                "feedback": "False."
+            }
+        ]
+    },
+    {
+        "question": "Enter the value of pi to 2 decimal places:",
+        "type": "numeric",
+        "answers": [
+            {
+                "type": "value",
+                "value": 3.14,
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "type": "range",
+                "range": [ 3.142857, 3.142858], 
+                "correct": true,
+                "feedback": "True to 2 decimal places, but you know pi is not really 22/7, right?"
+            },
+            {
+                "type": "range",
+                "range": [ -100000000, 0], 
+                "correct": false, "feedback": "pi is the AREA of a circle of radius 1. Try again."
+            },
+            {
+                "type": "default",
+                "feedback": "pi is the area of a circle of radius 1. Try again."
+            }
+        ]
+    },
+    {
+        "question": "Enter the value of pi (will be checked to 2 decimal places):",
+        "type": "numeric",
+        "precision": 2,
+        "answers": [
+            {
+                "type": "value",
+                "value": 3.14,
+                "correct": true,
+                "feedback": "Correct."
+            },
+            {
+                "type": "range",
+                "range": [ 3.142857, 3.142858], 
+                "correct": true,
+                "feedback": "True to 2 decimal places, but you know pi is not really 22/7, right?"
+            },
+            {
+                "type": "range",
+                "range": [ -100000000, 0], 
+                "correct": false,
+                "feedback": "pi is the AREA of a circle of radius 1. Try again."
+            },
+            {
+                "type": "default",
+                "feedback": "pi is the area of a circle of radius 1. Try again."
+            }
+        ]
+    },
+    {
+        "question": "Determine the output of the following Python code:",
+	"code": "a=\"1\"\nb=\"2\"\nprint(a+b)",
+        "type": "multiple_choice",
+        "answers": [
+            {
+                "answer": "1",
+                "correct": false,
+                "feedback": "No. When strings are operated on by +, they are concatenated."
+            },
+            {
+                "answer": "2",
+                "correct": false,
+                "feedback": "No. When strings are operated on by +, they are concatenated."
+            },
+            {
+                "answer": "3",
+                "correct": false,
+                "feedback": "No. When strings are operated on by +, they are concatenated."
+            },
+            {
+                "answer": "12",
+                "correct": true,
+                "feedback": "Yes. The + operator will concatenate the strings \"1\" and \"2\"."
+            },
+            {
+                "answer": "error",
+                "correct": false,
+                "feedback": "No. The + operator for strings performs string concatenation."
+            }
+        ]
+    }
+]
