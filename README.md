@@ -3,6 +3,8 @@ JupyterQuiz is a tool for displaying interactive Quizes in Jupyter notebooks and
 
 [Example of JupyterQuiz in Action](https://jmshea.github.io/intro-data-science-for-engineers/03-first-data/review.html)
 
+The notebook [test.ipynb](test.ipynb) shows more features but must be run on your own local Jupyter or in nbviewer -- GitHub only renders the static HTML that does not include the interactive quizzes. (If viewing on GitHub, there should be a little circle with a minus sign at the top of the file that offers you the ability to launch the notebook in nbviewer.)
+
 It currently supports two types of quiz questions:
 1. **Multiple/ Many Choice Questions:** Users are given a predefined set of choices and click on answer(s) they believe are correct.
 2. **Numerical:** Users are given a text box in which they can submit answers in decimal or fraction form.
