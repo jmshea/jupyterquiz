@@ -1,0 +1,45 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/jmshea/jupyterquiz/schema/mc_schema.json",
+    "title": "JupyterQuiz Multiple or Many Choice Quiz",
+    "description": "Schema for Multiple or Many Choice Questions in JupyterQuiz",
+    "type": "object",
+    "properties": {
+        "question": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string",
+            "pattern": "multiple_choice|many_choice"
+        },
+        "answers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "answer": {
+                        "type": "string"
+                    },
+                    "correct": {
+                        "type": "boolean"
+                    },
+                    "feedback": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "answer",
+                    "correct"
+                ]
+            }
+        },
+        "precision": {
+            "type": "integer"
+        }
+    },
+    "required": [
+        "type",
+        "question",
+        "answers"
+    ]
+}
