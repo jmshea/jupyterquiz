@@ -8,7 +8,11 @@ function check_mc() {
 
     var answers= event.srcElement.parentElement.children;
     //console.log(answers);
-    
+
+    if (event.srcElement.nodeName=="pre") {
+        answers=event.srcElement.parentElement.parentElement.children;
+    }
+
     // Split behavior based on multiple choice vs many choice:
     var fb = document.getElementById("fb"+id);
     console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
