@@ -15,6 +15,7 @@ function check_mc() {
     if (fb.dataset.numcorrect==1) {
         for (var i = 0; i < answers.length; i++) {
             var child=answers[i];
+            console.log(child);
             child.className="MCButton";
         }
 
