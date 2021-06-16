@@ -1,23 +1,22 @@
+
+
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$id": "https://github.com/jmshea/jupyterquiz/mc_schema.json",
     "title": "JupyterQuiz Multiple or Many Choice Quiz",
     "description": "Schema for Multiple or Many Choice Questions in JupyterQuiz",
-    "type": "object",
-    "properties": {
-        "question": {
-            "type": "string"
-        },
-        "type": {
-            "type": "string",
-            "pattern": "multiple_choice|many_choice"
-        },
-        "answers": {
+
+    "definitions": {
+        "answerlist":
+        {
             "type": "array",
             "items": {
                 "type": "object",
                 "properties": {
-                    "answer": {
+                    "answer (+)": {
+                        "type": "string"
+                    },
+                    "code (+)": {
                         "type": "string"
                     },
                     "correct": {
@@ -28,18 +27,30 @@
                     }
                 },
                 "required": [
-                    "answer",
                     "correct"
                 ]
             }
+
+        }
+    },
+
+
+    "type": "object",
+    
+    "properties": {
+        "type": {
+            "type": "string",
+            "pattern": "multiple_choice|many_choice"
+        },
+        "question": {
+            "type": "string"
         },
         "code": {
             "type": "string"
+        },
+        "answers": {
+            "$ref": "#/definitions/answerlist"
         }
     },
-    "required": [
-        "type",
-        "question",
-        "answers"
-    ]
+    "required":["question", "type", "answers"]
 }
