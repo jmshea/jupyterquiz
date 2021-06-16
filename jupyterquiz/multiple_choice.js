@@ -7,12 +7,20 @@ function check_mc() {
     //console.log(event.srcElement.dataset.feedback)
 
     console.log(event.srcElement);
-    var answers= event.srcElement.parentElement.children;
+    var label = event.srcElement;
+    var depth=0;
+    while ((label.nodeName!="label") && (depth<3)) {
+        label=label.parentElement;
+        console.log(depth,label);
+        depth++;
+    }
+
+
+
+    var answers=label.parentElement.children;
+
     //console.log(answers);
 
-    if (event.srcElement.nodeName=="pre") {
-        answers=event.srcElement.parentElement.parentElement.children;
-    }
 
     // Split behavior based on multiple choice vs many choice:
     var fb = document.getElementById("fb"+id);
@@ -26,17 +34,17 @@ function check_mc() {
 
 
 
-        fb.textContent=event.srcElement.dataset.feedback;
-        if (event.srcElement.dataset.correct=="true")   {
+        fb.textContent=label.dataset.feedback;
+        if (label.dataset.correct=="true")   {
             // console.log("Correct action");
-            this.classList.add("correctButton");
+            label.classList.add("correctButton");
 
             fb.className="Feedback";
             fb.classList.add("correct");
 
         } else {
             //console.log("Error action");
-            this.classList.add("incorrectButton");
+            label.classList.add("incorrectButton");
             fb.className="Feedback";
             fb.classList.add("incorrect");
         }
@@ -44,8 +52,8 @@ function check_mc() {
     else {
         //console.log("Many choice not implemented yet");
         var reset = false;
-        if (event.srcElement.dataset.correct=="true" )   {
-            if (event.srcElement.dataset.answered<=0) {
+        if (label.dataset.correct=="true" )   {
+            if (label.dataset.answered<=0) {
                 if (fb.dataset.answeredcorrect<0) {
                     fb.dataset.answeredcorrect=1;
                     reset=true;
@@ -59,8 +67,8 @@ function check_mc() {
                         child.dataset.answered=0;
                     }
                 }
-                this.classList.add("correctButton");
-                this.dataset.answered=1;
+                label.classList.add("correctButton");
+                label.dataset.answered=1;
                 fb.className="Feedback";
                 fb.classList.add("correct");
 
@@ -80,7 +88,7 @@ function check_mc() {
                     child.dataset.answered=0;
                 }
             }
-            this.classList.add("incorrectButton");
+            label.classList.add("incorrectButton");
             fb.className="Feedback";
             fb.classList.add("incorrect");
         }
@@ -89,9 +97,9 @@ function check_mc() {
         var numcorrect=fb.dataset.numcorrect;
         var answeredcorrect=fb.dataset.answeredcorrect;
         if (answeredcorrect>=0) {
-            fb.textContent=event.srcElement.dataset.feedback + " ["  + answeredcorrect + "/" + numcorrect + "]";
+            fb.textContent=label.dataset.feedback + " ["  + answeredcorrect + "/" + numcorrect + "]";
         } else {
-            fb.textContent=event.srcElement.dataset.feedback + " ["  + 0 + "/" + numcorrect + "]";
+            fb.textContent=label.dataset.feedback + " ["  + 0 + "/" + numcorrect + "]";
         }
 
 
