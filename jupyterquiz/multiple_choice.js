@@ -184,7 +184,7 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
         if (item.correct) {
             num_correct++;
         }
-        if ("feedback" in item.feedback){
+        if ("feedback" in item){
             lab.setAttribute('data-feedback', item.feedback);
         }
         lab.setAttribute('data-answered', 0);
