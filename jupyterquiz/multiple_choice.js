@@ -131,7 +131,7 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
 
         // Create div for code inside question
         var codeSpan;
-        if ("code" in qa){
+        if ("code" in item){
             codeSpan = document.createElement('span');
             codeSpan.id="code"+id+index;
             codeSpan.className="QuizCode";
