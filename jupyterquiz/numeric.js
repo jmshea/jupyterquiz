@@ -84,6 +84,14 @@ function check_numeric(ths, event) {
             fb.classList.add("incorrect");
         }
 
+        if (MathJax) {
+            var version=MathJax.version;
+            if (version[0]=="2") {
+                MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            } else if (version[0] == "3") {
+                MathJax.typeset();
+            }
+        }
         return false;
     }
 
