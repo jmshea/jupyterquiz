@@ -6,10 +6,10 @@ function check_mc() {
     //console.log(event.srcElement.dataset.correct)   
     //console.log(event.srcElement.dataset.feedback)
 
-    console.log(event.srcElement);
     var label = event.srcElement;
+    console.log(label, label.nodeName);
     var depth=0;
-    while ((label.nodeName!="label") && (depth<3)) {
+    while ((label.nodeName!="LABEL") && (depth<3)) {
         label=label.parentElement;
         console.log(depth,label);
         depth++;
