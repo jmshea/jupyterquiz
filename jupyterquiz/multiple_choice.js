@@ -7,11 +7,11 @@ function check_mc() {
     //console.log(event.srcElement.dataset.feedback)
 
     var label = event.srcElement;
-    console.log(label, label.nodeName);
+    //console.log(label, label.nodeName);
     var depth=0;
     while ((label.nodeName!="LABEL") && (depth<3)) {
         label=label.parentElement;
-        console.log(depth,label);
+        //console.log(depth,label);
         depth++;
     }
 
@@ -24,11 +24,11 @@ function check_mc() {
 
     // Split behavior based on multiple choice vs many choice:
     var fb = document.getElementById("fb"+id);
-    console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
+    //console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
     if (fb.dataset.numcorrect==1) {
         for (var i = 0; i < answers.length; i++) {
             var child=answers[i];
-            console.log(child);
+            //console.log(child);
             child.className="MCButton";
         }
 
@@ -174,7 +174,7 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
             codePre.append(codeCode);
             codeCode.innerHTML=item.code;
             lab.append(codeSpan);
-            console.log(codeSpan);
+            //console.log(codeSpan);
         }
 
         //lab.textContent=item.answer;
