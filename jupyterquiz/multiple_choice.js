@@ -140,7 +140,7 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
             codeSpan.append(codePre);
             var codeCode = document.createElement('code');
             codePre.append(codeCode);
-            codeCode.innerHTML=qa.code;
+            codeCode.innerHTML=item.code;
             lab.append(codeSpan);
             console.log(codeSpan);
         }
