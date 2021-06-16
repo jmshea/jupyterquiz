@@ -34,15 +34,24 @@ function check_mc() {
 
 
 
-        fb.textContent=label.dataset.feedback;
         if (label.dataset.correct=="true")   {
             // console.log("Correct action");
+            if ("feedback" in label.dataset) {
+                fb.textContent=label.dataset.feedback;
+            } else{
+                fb.textContent="Correct!";
+            }
             label.classList.add("correctButton");
 
             fb.className="Feedback";
             fb.classList.add("correct");
 
         } else {
+            if ("feedback" in label.dataset) {
+                fb.textContent=label.dataset.feedback;
+            } else{
+                fb.textContent="Incorrect -- try again.";
+            }
             //console.log("Error action");
             label.classList.add("incorrectButton");
             fb.className="Feedback";
@@ -50,9 +59,14 @@ function check_mc() {
         }
     }
     else {
-        //console.log("Many choice not implemented yet");
         var reset = false;
+        var feedback;
         if (label.dataset.correct=="true" )   {
+            if ("feedback" in label.dataset) {
+                feedback=label.dataset.feedback;
+            } else{
+                feedback="Correct!";
+            }
             if (label.dataset.answered<=0) {
                 if (fb.dataset.answeredcorrect<0) {
                     fb.dataset.answeredcorrect=1;
@@ -74,6 +88,11 @@ function check_mc() {
 
             }
         } else {
+            if ("feedback" in label.dataset) {
+                feedback=label.dataset.feedback;
+            } else{
+                feedback="Incorrect -- try again.";
+            }
             if (fb.dataset.answeredcorrect>0) {
                 fb.dataset.answeredcorrect=-1;
                 reset=true;
@@ -97,15 +116,13 @@ function check_mc() {
         var numcorrect=fb.dataset.numcorrect;
         var answeredcorrect=fb.dataset.answeredcorrect;
         if (answeredcorrect>=0) {
-            fb.textContent=label.dataset.feedback + " ["  + answeredcorrect + "/" + numcorrect + "]";
+            fb.textContent=feedback + " ["  + answeredcorrect + "/" + numcorrect + "]";
         } else {
-            fb.textContent=label.dataset.feedback + " ["  + 0 + "/" + numcorrect + "]";
+            fb.textContent=feedback + " ["  + 0 + "/" + numcorrect + "]";
         }
 
 
     }
-
-    
 
 }
 
@@ -167,7 +184,9 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
         if (item.correct) {
             num_correct++;
         }
-        lab.setAttribute('data-feedback', item.feedback);
+        if ("feedback" in item.feedback){
+            lab.setAttribute('data-feedback', item.feedback);
+        }
         lab.setAttribute('data-answered', 0);
 
         aDiv.append(lab);
