@@ -124,6 +124,15 @@ function check_mc() {
 
     }
 
+    if (MathJax) {
+        var version=MathJax.version;
+        if (version[0]=="2") {
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+        } else if (version[0] == "3") {
+            MathJax.typeset();
+        }
+    }
+
 }
 
 function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
