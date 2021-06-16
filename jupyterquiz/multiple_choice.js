@@ -159,7 +159,9 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
         var aSpan = document.createElement('span');
         aSpan.classsName="";
         //qDiv.id="quizQn"+id+index;
-        aSpan.innerHTML=item.answer;
+        if ("answer" in item) {
+            aSpan.innerHTML=item.answer;
+        }
         lab.append(aSpan);
 
         // Create div for code inside question
