@@ -39,14 +39,16 @@ function check_numeric(ths, event) {
             console.log(answer.type);
 
             correct=false;
-            if (answer.type=="value"){
+            #if (answer.type=="value"){
+            if ('value' in answer){
                 if (submission == answer.value) {
                     fb.textContent=answer.feedback;
                     correct=answer.correct;
                     console.log(answer.correct);
                     done=true;
                 }
-            } else if (answer.type=="range") {
+            #} else if (answer.type=="range") {
+            } else if ('range' in answer) {
                 console.log(answer.range);
                 if ((submission >= answer.range[0]) && (submission < answer.range[1])) {
                     fb.textContent=answer.feedback;
