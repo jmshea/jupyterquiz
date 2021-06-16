@@ -125,6 +125,7 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
         lab.id=id+ '-' +index;
         lab.onclick=check_mc;
         var aSpan = document.createElement('span');
+        aSpan.classsName="";
         //qDiv.id="quizQn"+id+index;
         aSpan.innerHTML=item.answer;
         lab.append(aSpan);
