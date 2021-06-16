@@ -11,6 +11,7 @@ function check_mc() {
     
     // Split behavior based on multiple choice vs many choice:
     var fb = document.getElementById("fb"+id);
+    console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
     if (fb.dataset.numcorrect==1) {
         for (var i = 0; i < answers.length; i++) {
             var child=answers[i];
