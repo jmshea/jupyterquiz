@@ -108,24 +108,44 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
     var num_correct=0;
 
 
-    
+
     shuffled.forEach((item, index, ans_array) => {
         //console.log(answer);
-        
+
         // Make input element
         var inp = document.createElement("input");
         inp.type="radio";
         inp.id="quizo"+id+index;
         inp.style="display:none;";
         aDiv.append(inp);
-        
+
         //Make label for input element
         var lab = document.createElement("label");
         lab.className="MCButton";
         lab.id=id+ '-' +index;
         lab.onclick=check_mc;
-        lab.textContent=item.answer;
-        
+        var aSpan = document.createElement('span');
+        //qDiv.id="quizQn"+id+index;
+        aSpan.innerHTML=item.answer;
+        lab.append(aSpan);
+
+        // Create div for code inside question
+        var codeSpan;
+        if ("code" in qa){
+            codeSpan = document.createElement('span');
+            codeSpan.id="code"+id+index;
+            codeSpan.className="QuizCode";
+            var codePre = document.createElement('pre');
+            codeSpan.append(codePre);
+            var codeCode = document.createElement('code');
+            codePre.append(codeCode);
+            codeCode.innerHTML=qa.code;
+            lab.append(codeSpan);
+            console.log(codeSpan);
+        }
+
+        //lab.textContent=item.answer;
+
         // Set the data attributes for the answer
         lab.setAttribute('data-correct', item.correct);
         if (item.correct) {
