@@ -84,7 +84,7 @@ function check_mc() {
         if (answeredcorrect>=0) {
             fb.textContent=event.srcElement.dataset.feedback + " ["  + answeredcorrect + "/" + numcorrect + "]";
         } else {
-            fb.textContent=event.srcElement.dataset.feedback + "["  + 0 + "/" + numcorrect + "]";
+            fb.textContent=event.srcElement.dataset.feedback + " ["  + 0 + "/" + numcorrect + "]";
         }
 
 
