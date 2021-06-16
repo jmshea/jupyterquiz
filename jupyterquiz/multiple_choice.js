@@ -6,6 +6,7 @@ function check_mc() {
     //console.log(event.srcElement.dataset.correct)   
     //console.log(event.srcElement.dataset.feedback)
 
+    consoole.log(srcElement);
     var answers= event.srcElement.parentElement.children;
     //console.log(answers);
 
