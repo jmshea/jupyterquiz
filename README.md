@@ -1,5 +1,19 @@
 # JupyterQuiz
-JupyterQuiz is a tool for displaying interactive Quizes in Jupyter notebooks and Jupyter Book. To see an example with various types of functionality check out the Review section of Chapter 3 of the *Introduction to Data Science for Engineers* Jupyter Book: 
+JupyterQuiz is a tool for displaying **interactive self-assessment quizes in Jupyter notebooks and Jupyter Book**. These animated GIFs illustrate the two basic question types:
+
+**Many Choice Question**
+
+![Example many-choice question using JupyterQuiz.](examples/mc-example.gif)
+
+ ---
+ 
+ **Numerical Answer Question**
+ 
+![Example numerical answer question using JupyterQuiz.](examples/num-example.gif)
+
+---
+
+For more examples with various types of functionality, check out the Review section of Chapter 3 of the *Introduction to Data Science for Engineers* Jupyter Book: 
 
 [Example of JupyterQuiz in Action](https://jmshea.github.io/intro-data-science-for-engineers/03-first-data/review.html)
 
