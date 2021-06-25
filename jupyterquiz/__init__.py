@@ -11,5 +11,5 @@ for the book Introduction to Data Science for Engineers
 All files in the package are distributed under the MIT License
 '''
 
-__version__ = '1.3.1'
+__version__ = '1.3.2'
 from .dynamic import  display_quiz

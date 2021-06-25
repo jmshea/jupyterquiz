@@ -78,7 +78,7 @@ Numerical questions consist of a Question, an optional Precision, and one or mor
   \* = Required parameter
   
   Example JSON for a numerical question is below:
-  ```
+```
   {
         "question": "Enter the value of pi (will be checked to 2 decimal places):",
         "type": "numeric",
