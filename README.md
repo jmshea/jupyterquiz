@@ -3,13 +3,13 @@ JupyterQuiz is a tool for displaying **interactive self-assessment quizes in Jup
 
 **Many Choice Question**
 
-![Example many-choice question using JupyterQuiz.](examples/mc-example.gif)
+![Example many-choice question using JupyterQuiz.](https://github.com/jmshea/jupyterquiz/blob/main/examples/mc-example.gif?raw=true)
 
  ---
  
  **Numerical Answer Question**
  
-![Example numerical answer question using JupyterQuiz.](examples/num-example.gif)
+![Example numerical answer question using JupyterQuiz.](https://github.com/jmshea/jupyterquiz/blob/main/examples/num-example.gif?raw=true)
 
 ---
 
@@ -28,7 +28,7 @@ Each type of question offers different ways to provide feedback to help users un
 ## Multiple/Many Choice Questions
 
 Multiple/Many Choice questions are defined by a Question, an optional Code block, and a list of possible Answers. Answers include a text component and/or a code block, details on whether the Answer is correct, and Feedback to be displayed for that Answer. The schema for Multiple/Many Choice Questions is shown below:
-  ![Schema for Multiple/Many Choice Questions in JupyterQuiz](schema/mc_schema.png)
+  ![Schema for Multiple/Many Choice Questions in JupyterQuiz](https://github.com/jmshea/jupyterquiz/blob/main/schema/mc_schema.png?raw=true)
 
 \* = Required parameter, (+) = At least one of these parameters is required
 
@@ -73,7 +73,7 @@ Example JSON for a many-choice question is below:
 
 Numerical questions consist of a Question, an optional Precision, and one or more Answers. Each Answer can be a Value, a Range, or the Default, and each of these can include Feedback text. Values and Ranges can be marked as correct or incorrect. Ranges are in the form [A,B), where endpoint A is included in the range and endpoint B is not included in the range. When Precision is specified, numerical inputs are rounded to the specified precision before comparing to the Answers. The schema for Numerical questions is shown below:
 
-  ![Schema for Numerical Questions in JupyterQuiz](schema/num_schema.png)
+  ![Schema for Numerical Questions in JupyterQuiz](https://github.com/jmshea/jupyterquiz/blob/main/schema/num_schema.png?raw=true)
   
   \* = Required parameter
   
