@@ -99,6 +99,9 @@
      color: #fafafa;
      border-radius: 10px;
  }
+.NumericQn p {
+     color: inherit;
+}
 .InpLabel {
      line-height: 34px;
      float:left;
