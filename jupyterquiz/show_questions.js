@@ -91,7 +91,7 @@ function show_questions (json, mydiv) {
 
 
     });
-    if (MathJax) {
+    if (typeof MathJax != 'undefined') {
         var version=MathJax.version;
         if (version[0]=="2") {
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
