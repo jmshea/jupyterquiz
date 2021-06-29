@@ -98,6 +98,7 @@ function check_numeric(ths, event) {
 }
 
 function isValid(el,  charC) {
+    console.log("Input char: ", charC);
 		if (charC == 46) {
 				if (el.value.indexOf('.') === -1) {
 					  return true;
@@ -121,8 +122,28 @@ function isValid(el,  charC) {
             return false;
         }
 		} else if (charC == 45) {
+        edex=el.value.indexOf('e');
+        if (edex==-1) {
+            edex=el.value.indexOf('E');
+        }
+
         if (el.value == "" ) {
             return true;
+        } else if ( edex== (el.value.length-1) ) { // If just after e or E
+            return true;
+        } else {
+            return false;
+        }
+    } else if (charC == 101) { // "e"
+				if ( (el.value.indexOf('e') === -1) && (el.value.indexOf('E') === -1) && (el.value.indexOf('/') == -1) ) {
+            // Prev symbol must be digit or decimal point:
+            if (el.value.slice(-1).search(/\d/) >= 0){
+                return true;
+            } else if (el.value.slice(-1).search(/\./) >= 0) {
+                return true;
+            } else{
+                return false;
+            }
         } else {
             return false;
         }
