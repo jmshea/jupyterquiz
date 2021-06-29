@@ -1,3 +1,22 @@
+function jaxify(string) {
+    mystring = string;
+    count=0;
+    console.log(loc);
+    var loc=mystring.search(/([^\\]|^)(\$)/);
+    while (loc>0) {
+        if (count%2==0) {
+            mystring=mystring.replace(/([^\\]|^)(\$)/, "$1\\(");
+        } else {
+            mystring=mystring.replace(/([^\\]|^)(\$)/, "$1\\)");
+        }
+        count++;
+        loc=mystring.search(/([^\\]|^)(\$)/);
+    }
+
+    return mystring;
+}
+
+
 function show_questions (json, mydiv) {
     //var mydiv=document.getElementById(myid);
     var shuffle_questions=mydiv.dataset.shufflequestions;
@@ -42,7 +61,7 @@ function show_questions (json, mydiv) {
         var qDiv = document.createElement('div');
         qDiv.id="quizQn"+id+index;
         //qDiv.textContent=qa.question;
-        qDiv.innerHTML=qa.question;
+        qDiv.innerHTML=jaxify(qa.question);
         outerqDiv.append(qDiv);
 
         // Create div for code inside question
@@ -91,12 +110,16 @@ function show_questions (json, mydiv) {
 
 
     });
+    console.log("At end of show_questions");
     if (typeof MathJax != 'undefined') {
+        console.log("MathJax version",MathJax.version);
         var version=MathJax.version;
         if (version[0]=="2") {
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
         } else if (version[0] == "3") {
             MathJax.typeset();
+        } else{
+            console.log("MathJax not found");
         }
     }
     return false;
