@@ -82,6 +82,9 @@
      cursor: pointer;
      text-align: center;
  }
+.MCButton p {
+    color: inherit;    
+}
  .MultipleChoiceQn {
      padding: 10px;
      background: var(--medium-slate-blue);
