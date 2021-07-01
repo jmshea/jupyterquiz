@@ -40,7 +40,8 @@
 }
 .Feedback{
      font-size: 16pt;
-     text-align:center;
+     text-align: center;
+     min-height: 2em;
  }
 
 .Input {
@@ -112,20 +113,32 @@
 .incorrect {
     color: var(--incorrect-red);
 }
+
 .correct {
     color: var(--correct-green);
 }
 .correctButton {
+    /*
     background: var(--correct-green);
+   */
+    animation: correct-anim 0.6s ease;
+    animation-fill-mode: forwards;
     color: #fafafa;
     box-shadow: inset 0px 0px 5px #555555;
     outline: none;
 }
 .incorrectButton {
-    background: var(--incorrect-red);
+    animation: incorrect-anim 0.8s ease;
+    animation-fill-mode: forwards;
     color: #fafafa;
     box-shadow: inset 0px 0px 5px #555555;
     outline: none;
 }
 
+@keyframes incorrect-anim {
+    100% {background-color: var(--incorrect-red);}
+}
 
+@keyframes correct-anim {
+    100% {background-color: var(--correct-green);}
+}
