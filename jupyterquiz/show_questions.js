@@ -1,8 +1,8 @@
 function jaxify(string) {
     mystring = string;
     count=0;
-    console.log(loc);
     var loc=mystring.search(/([^\\]|^)(\$)/);
+    //console.log(loc);
     while (loc>0) {
         if (count%2==0) {
             mystring=mystring.replace(/([^\\]|^)(\$)/, "$1\\(");
