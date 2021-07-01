@@ -1,18 +1,38 @@
 function jaxify(string) {
-    mystring = string;
+    var mystring = string;
+
     count=0;
     var loc=mystring.search(/([^\\]|^)(\$)/);
+
+    count2=0;
+    var loc2=mystring.search(/([^\\]|^)(\$\$)/);
+
     //console.log(loc);
-    while (loc>0) {
-        if (count%2==0) {
-            mystring=mystring.replace(/([^\\]|^)(\$)/, "$1\\(");
+
+    while ( (loc >= 0) || (loc2 >=0))  {
+
+        /* Have to replace all the double $$ first with current implementation */
+        if (loc2 >=0) {
+            if (count2%2==0) {
+                mystring=mystring.replace(/([^\\]|^)(\$\$)/, "$1\\[");
+            } else {
+                mystring=mystring.replace(/([^\\]|^)(\$\$)/, "$1\\]");
+            }
+            count2++;
         } else {
-            mystring=mystring.replace(/([^\\]|^)(\$)/, "$1\\)");
+            if (count%2==0) {
+                mystring=mystring.replace(/([^\\]|^)(\$)/, "$1\\(");
+            } else {
+                mystring=mystring.replace(/([^\\]|^)(\$)/, "$1\\)");
+            }
+            count++;
         }
-        count++;
         loc=mystring.search(/([^\\]|^)(\$)/);
+        loc2=mystring.search(/([^\\]|^)(\$\$)/);
+        //console.log(mystring,", loc:",loc,", loc2:",loc2);
     }
 
+    //console.log(mystring);
     return mystring;
 }
 
@@ -76,7 +96,7 @@ function show_questions (json, mydiv) {
             codePre.append(codeCode);
             codeCode.innerHTML=qa.code;
             outerqDiv.append(codeDiv);
-            console.log(codeDiv);
+            //console.log(codeDiv);
         }
 
 
@@ -86,7 +106,7 @@ function show_questions (json, mydiv) {
         aDiv.className='Answer';
         iDiv.append(aDiv);
 
-        console.log(qa.type);
+        //console.log(qa.type);
 
         var num_correct;
         if (qa.type=="multiple_choice")  {
@@ -94,7 +114,7 @@ function show_questions (json, mydiv) {
         } else if   (qa.type=="many_choice"){
             num_correct=make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id);
         } else if  (qa.type=="numeric") {
-            console.log("numeric");
+            //console.log("numeric");
             make_numeric(qa, outerqDiv, qDiv, aDiv, id);
         }
 
@@ -110,7 +130,7 @@ function show_questions (json, mydiv) {
 
 
     });
-    console.log("At end of show_questions");
+    //console.log("At end of show_questions");
     if (typeof MathJax != 'undefined') {
         console.log("MathJax version",MathJax.version);
         var version=MathJax.version;

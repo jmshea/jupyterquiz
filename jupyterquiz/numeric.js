@@ -11,7 +11,7 @@ function check_numeric(ths, event) {
             //console.log(sub_parts);
             submission=sub_parts[0]/sub_parts[1];
         }
-        console.log("Reader entered", submission);
+        //console.log("Reader entered", submission);
 
         if ("precision" in ths.dataset) {
             precision=ths.dataset.precision;
@@ -30,13 +30,13 @@ function check_numeric(ths, event) {
         fb.textContent="Incorrect -- try again.";
 
         answers=JSON.parse(ths.dataset.answers);
-        console.log(answers);
+        //console.log(answers);
 
         var defaultFB="";
         var correct;
         var done=false;
         answers.every(answer => {
-            console.log(answer.type);
+            //console.log(answer.type);
 
             correct=false;
             // if (answer.type=="value"){
@@ -44,16 +44,16 @@ function check_numeric(ths, event) {
                 if (submission == answer.value) {
                     fb.textContent=answer.feedback;
                     correct=answer.correct;
-                    console.log(answer.correct);
+                    //console.log(answer.correct);
                     done=true;
                 }
             // } else if (answer.type=="range") {
             } else if ('range' in answer) {
-                console.log(answer.range);
+                //console.log(answer.range);
                 if ((submission >= answer.range[0]) && (submission < answer.range[1])) {
                     fb.textContent=answer.feedback;
                     correct=answer.correct;
-                    console.log(answer.correct);
+                    //console.log(answer.correct);
                     done=true;
                 }
             } else if (answer.type=="default") {
@@ -68,7 +68,7 @@ function check_numeric(ths, event) {
 
         if ((!done) && (defaultFB != "")) {
             fb.textContent=defaultFB;
-            console.log("Default feedback", defaultFB);
+            //console.log("Default feedback", defaultFB);
         }
 
         fb.style.display="block";
@@ -83,14 +83,16 @@ function check_numeric(ths, event) {
             fb.className="Feedback";
             fb.classList.add("incorrect");
         }
-
-        if (MathJax) {
+        if (typeof MathJax != 'undefined') {
             var version=MathJax.version;
+            console.log('MathJax version', version);
             if (version[0]=="2") {
                 MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
             } else if (version[0] == "3") {
                 MathJax.typeset();
             }
+        } else {
+            console.log('MathJax not detected');
         }
         return false;
     }
@@ -98,7 +100,7 @@ function check_numeric(ths, event) {
 }
 
 function isValid(el,  charC) {
-    console.log("Input char: ", charC);
+    //console.log("Input char: ", charC);
 		if (charC == 46) {
 				if (el.value.indexOf('.') === -1) {
 					  return true;
@@ -193,7 +195,7 @@ function make_numeric(qa, outerqDiv, qDiv, aDiv, id) {
         inp.setAttribute('data-precision', qa.precision);
     }
     aDiv.append(inp);
-    console.log(inp);
+    //console.log(inp);
 
     //inp.addEventListener("keypress", check_numeric);
     //inp.addEventListener("keypress", numeric_keypress);

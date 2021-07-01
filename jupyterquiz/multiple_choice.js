@@ -9,9 +9,9 @@ function check_mc() {
     var label = event.srcElement;
     //console.log(label, label.nodeName);
     var depth=0;
-    while ((label.nodeName!="LABEL") && (depth<3)) {
+    while ((label.nodeName!="LABEL") && (depth<10)) {
         label=label.parentElement;
-        //console.log(depth,label);
+        console.log(depth,label);
         depth++;
     }
 
@@ -37,7 +37,7 @@ function check_mc() {
         if (label.dataset.correct=="true")   {
             // console.log("Correct action");
             if ("feedback" in label.dataset) {
-                fb.textContent=label.dataset.feedback;
+                fb.textContent=jaxify(label.dataset.feedback);
             } else{
                 fb.textContent="Correct!";
             }
@@ -48,7 +48,7 @@ function check_mc() {
 
         } else {
             if ("feedback" in label.dataset) {
-                fb.textContent=label.dataset.feedback;
+                fb.textContent=jaxify(label.dataset.feedback);
             } else{
                 fb.textContent="Incorrect -- try again.";
             }
@@ -63,7 +63,7 @@ function check_mc() {
         var feedback;
         if (label.dataset.correct=="true" )   {
             if ("feedback" in label.dataset) {
-                feedback=label.dataset.feedback;
+                feedback=jaxify(label.dataset.feedback);
             } else{
                 feedback="Correct!";
             }
@@ -89,7 +89,7 @@ function check_mc() {
             }
         } else {
             if ("feedback" in label.dataset) {
-                feedback=label.dataset.feedback;
+                feedback=jaxify(label.dataset.feedback);
             } else{
                 feedback="Incorrect -- try again.";
             }
@@ -124,13 +124,16 @@ function check_mc() {
 
     }
 
-    if (MathJax) {
+    if (typeof MathJax != 'undefined') {
         var version=MathJax.version;
+        console.log('MathJax version', version);
         if (version[0]=="2") {
             MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
         } else if (version[0] == "3") {
             MathJax.typeset();
         }
+    } else {
+        console.log('MathJax not detected');
     }
 
 }
@@ -169,7 +172,8 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
         aSpan.classsName="";
         //qDiv.id="quizQn"+id+index;
         if ("answer" in item) {
-            aSpan.innerHTML=item.answer;
+            aSpan.innerHTML=jaxify(item.answer);
+            //aSpan.innerHTML=item.answer;
         }
         lab.append(aSpan);
 
