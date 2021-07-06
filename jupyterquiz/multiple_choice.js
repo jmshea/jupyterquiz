@@ -9,7 +9,7 @@ function check_mc() {
     var label = event.srcElement;
     //console.log(label, label.nodeName);
     var depth = 0;
-    while ((label.nodeName != "LABEL") && (depth < 10)) {
+    while ((label.nodeName != "LABEL") && (depth < 20)) {
         label = label.parentElement;
         console.log(depth, label);
         depth++;
