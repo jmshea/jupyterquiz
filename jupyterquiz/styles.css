@@ -1,4 +1,3 @@
-
 :root {
     --medium-slate-blue: #6f78ffff;
     --orange-pantone: #f75c03ff;
@@ -9,17 +8,16 @@
     --correct-green: #009113;
 }
 
-
 .Quiz {
-     max-width: 600px;
-     margin-top: 15px;
-     margin-left: auto;
-     margin-right: auto;
-     margin-bottom: 15px;
-     padding-bottom: 4px;
-     padding-top: 4px;
-     line-height: 1.1;
-     font-size: 16pt;
+    max-width: 600px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    padding-bottom: 4px;
+    padding-top: 4px;
+    line-height: 1.1;
+    font-size: 16pt;
 }
 
 .QuizCode {
@@ -29,25 +27,28 @@
     margin-right: 20px;
 }
 
-.QuizCode > pre {
+.QuizCode>pre {
     padding: 4px;
 }
-.Answer{
-     margin: 10px 0;
-     display: grid;
-     grid-template-columns: auto auto;
-     grid-gap: 10px;
+
+.Answer {
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
 }
-.Feedback{
-     font-size: 16pt;
-     text-align: center;
-     min-height: 2em;
- }
+
+.Feedback {
+    font-size: 16pt;
+    text-align: center;
+    min-height: 2em;
+}
 
 .Input {
-    align:left;
+    align: left;
     font-size: 20pt;
 }
+
 .Input-text {
     display: block;
     margin: 10px;
@@ -57,7 +58,6 @@
     color: #fff;
     padding: 5px;
     padding-left: 10px;
-
     font-family: inherit;
     font-size: 20px;
     font-weight: inherit;
@@ -67,52 +67,59 @@
     transition: box-shadow 0.1s);
 }
 
- .Input-text:focus {
-     outline: none;
-     background-color: #c0c0c0;
-     box-shadow: 0.6rem 0.8rem 1.4rem -0.5rem #999999;
- }
+.Input-text:focus {
+    outline: none;
+    background-color: #c0c0c0;
+    box-shadow: 0.6rem 0.8rem 1.4rem -0.5rem #999999;
+}
 
- .MCButton{
-     background: #fafafa;
-     border: 1px solid #eee;
-     border-radius: 10px;
-     padding: 10px;
-     font-size: 16px;
-     cursor: pointer;
-     text-align: center;
- }
+.MCButton {
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
 .MCButton p {
-    color: inherit;    
+    color: inherit;
 }
- .MultipleChoiceQn {
-     padding: 10px;
-     background: var(--medium-slate-blue);
-     color: #fafafa;
-     border-radius: 10px;
- }
- .ManyChoiceQn {
-     padding: 10px;
-     background: var(--orange-pantone);
-     color: #fafafa;
-     border-radius: 10px;
- }
- .NumericQn {
-     padding: 10px;
-     background: var(--russian-violet);
-     color: #fafafa;
-     border-radius: 10px;
- }
+
+.MultipleChoiceQn {
+    padding: 10px;
+    background: var(--medium-slate-blue);
+    color: #fafafa;
+    border-radius: 10px;
+}
+
+.ManyChoiceQn {
+    padding: 10px;
+    background: var(--orange-pantone);
+    color: #fafafa;
+    border-radius: 10px;
+}
+
+.NumericQn {
+    padding: 10px;
+    background: var(--russian-violet);
+    color: #fafafa;
+    border-radius: 10px;
+}
+
 .NumericQn p {
-     color: inherit;
+    color: inherit;
 }
+
 .InpLabel {
-     line-height: 34px;
-     float:left;
-     margin-right: 10px;
-     color: #101010;
-     font-size: 15pt;
+    line-height: 34px;
+    float: left;
+    margin-right: 10px;
+    color: #101010;
+    font-size: 15pt;
 }
+
 .incorrect {
     color: var(--incorrect-red);
 }
@@ -120,6 +127,7 @@
 .correct {
     color: var(--correct-green);
 }
+
 .correctButton {
     /*
     background: var(--correct-green);
@@ -130,6 +138,7 @@
     box-shadow: inset 0px 0px 5px #555555;
     outline: none;
 }
+
 .incorrectButton {
     animation: incorrect-anim 0.8s ease;
     animation-fill-mode: forwards;
@@ -139,9 +148,13 @@
 }
 
 @keyframes incorrect-anim {
-    100% {background-color: var(--incorrect-red);}
+    100% {
+        background-color: var(--incorrect-red);
+    }
 }
 
 @keyframes correct-anim {
-    100% {background-color: var(--correct-green);}
+    100% {
+        background-color: var(--correct-green);
+    }
 }
