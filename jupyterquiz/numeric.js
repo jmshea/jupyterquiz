@@ -42,7 +42,7 @@ function check_numeric(ths, event) {
             // if (answer.type=="value"){
             if ('value' in answer) {
                 if (submission == answer.value) {
-                    fb.textContent = answer.feedback;
+                    fb.textContent = jaxify(answer.feedback);
                     correct = answer.correct;
                     //console.log(answer.correct);
                     done = true;
@@ -51,7 +51,7 @@ function check_numeric(ths, event) {
             } else if ('range' in answer) {
                 //console.log(answer.range);
                 if ((submission >= answer.range[0]) && (submission < answer.range[1])) {
-                    fb.textContent = answer.feedback;
+                    fb.textContent = jaxify(answer.feedback);
                     correct = answer.correct;
                     //console.log(answer.correct);
                     done = true;
@@ -67,7 +67,7 @@ function check_numeric(ths, event) {
         });
 
         if ((!done) && (defaultFB != "")) {
-            fb.textContent = defaultFB;
+            fb.textContent = jaxify(defaultFB);
             //console.log("Default feedback", defaultFB);
         }
 
