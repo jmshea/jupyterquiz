@@ -11,12 +11,12 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
 
     letters = string.ascii_letters
     div_id = ''.join(random.choice(letters) for i in range(12))
-    # print(div_id)
+    #print(div_id)
 
-    mydiv = '<div id="' + div_id + '" data-shufflequestions="' + \
-        str(shuffle_questions) + '"'
-    mydiv += ' data-shuffleanswers="' + str(shuffle_answers) + '"'
-    mydiv += ' data-numquestions="' + str(num) + '">'
+    mydiv = f"""<div id="{div_id}" data-shufflequestions="{str(shuffle_questions)}"
+               data-shuffleanswers="{str(shuffle_answers)}"
+               data-numquestions="{str(num)}"> """
+    #print(mydiv)
 
     styles = "<style>"
     css = pkg_resources.resource_string(resource_package, "styles.css")
@@ -25,15 +25,28 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
 
     script = '<script type="text/Javascript">'
 
-    script += "questions"+div_id+"="
 
     if type(ref) == list:
         #print("List detected. Assuming JSON")
+        script += f"var questions{div_id}="
         script += json.dumps(ref)
         static = True
         url = ""
     elif type(ref) == str:
-        if ref.lower().find("http") == 0:
+        if ref[0] == '#':
+            script+=f'''var e=document.getElementById("{ref[1:]}");
+            var questions;
+            try {{
+               questions{div_id}=eval(window.atob(e.innerHTML));
+            }} catch(err) {{
+               console.log("Fell into catch");
+               questions{div_id} = eval(e.innerHTML);
+            }}
+            console.log(questions{div_id});'''
+            static = True;
+            #print(script)
+        elif ref.lower().find("http") == 0:
+            script += "var questions"+div_id+"="
             url = ref
             file = urllib.request.urlopen(url)
             for line in file:
@@ -41,6 +54,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
             static = False
         else:
             #print("File detected")
+            script += "var questions"+div_id+"="
             with open(ref) as file:
                 for line in file:
                     script += line
@@ -74,16 +88,15 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     script += show_questions.decode("utf-8")
 
     if static:
-        script += '''
-        {
-        show_questions(questions'''
-        script_end = div_id+", "+div_id
-        script_end += ''');
-        }
+        script += f"""
+        {{
+        show_questions(questions{div_id},  {div_id});
+        }}
         </script>
-        '''
+        """
+        javascript = script 
 
-        javascript = script + script_end
+
         print()
     else:
         script += '''
