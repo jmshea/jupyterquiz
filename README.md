@@ -1,5 +1,13 @@
 # JupyterQuiz
-JupyterQuiz is a tool for displaying **interactive self-assessment quizes in Jupyter notebooks and Jupyter Book**. These animated GIFs illustrate the two basic question types:
+*JupyterQuiz* is a tool for displaying **interactive self-assessment quizes in Jupyter notebooks and Jupyter Book**. 
+
+*JupyterQuiz* is part of my effort to make **open source tools for developing modern, interactive textbooks**.
+* The other part of this effort is my interactive self-assessment quiz tool, 
+[JupyterCards](https://github.com/jmshea/jupytercards).  
+* You can see both tools in action in my 
+(in-progress) textbook [Introduction to Data Science for Engineers](https://github.com/jmshea/intro-data-science-for-engineers).
+
+These animated GIFs illustrate the two basic question types in *JupyterQuiz*:
 
 **Many Choice Question**
 
@@ -23,7 +31,18 @@ It currently supports two types of quiz questions:
 1. **Multiple/ Many Choice Questions:** Users are given a predefined set of choices and click on answer(s) they believe are correct.
 2. **Numerical:** Users are given a text box in which they can submit answers in decimal or fraction form.
 
-Each type of question offers different ways to provide feedback to help users understand what they did wrong (or right). Questions can be written as JSON or loaded from a dictionary in Python. 
+Each type of question offers different ways to provide feedback to help users understand what they did wrong (or right).
+
+Quesitons can be loaded from:
+* a Python list of dict,
+* a JSON local file,
+* via a URL to a JSON file.
+
+## Installation 
+
+*JupyterQuiz* is available via pip:
+
+``` pip install jupyterquiz```
 
 ## Multiple/Many Choice Questions
 
