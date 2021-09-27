@@ -38,6 +38,10 @@ Quesitons can be loaded from:
 * a JSON local file,
 * via a URL to a JSON file.
 
+**New as of version 1.6 (9/26/2021): You can now embed the question source (most importantly, the answers) in Jupyter Notebook so that they will not be directly visibile to users!**
+
+Question source data can be stored in any Markdown cell in a hidden HTML element (such as a span with the display style set to "none"). Questions can be stored as either JSON or base64-encoded JSON (to make them non-human readable). Please see the notebook [HideQuiz.ipynb](HideQuiz.ipynb) for examples of how to use this.
+
 ## Installation 
 
 *JupyterQuiz* is available via pip:
