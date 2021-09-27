@@ -97,16 +97,15 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
 
         print()
     else:
-        script += '''
+        script += f'''
         //console.log(element);
-        {
+        {{
         const jmscontroller = new AbortController();
         const signal = jmscontroller.signal;
 
         setTimeout(() => jmscontroller.abort(), 5000);
 
-        fetch("'''
-        script_end = f'''", {{signal}})
+        fetch("{url}", {{signal}})
         .then(response => response.json())
         .then(json => show_questions(json, {div_id}))
         .catch(err => {{
@@ -116,7 +115,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
         }}
         </script>
         '''
-        javascript = script + url + script_end
+        javascript = script 
 
     # print(javascript)
     display(HTML(mydiv + styles + javascript))
