@@ -57,10 +57,10 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
             script+=f'''var element=document.getElementById("{ref[1:]}");
             var questions;
             try {{
-               questions{div_id}=eval(window.atob(element.innerHTML));
+               questions{div_id}=JSON.parse(window.atob(element.innerHTML));
             }} catch(err) {{
                console.log("Fell into catch");
-               questions{div_id} = eval(element.innerHTML);
+               questions{div_id} = JSON.parse(element.innerHTML);
             }}
             console.log(questions{div_id});'''
             static = True;
