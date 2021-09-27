@@ -46,7 +46,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
             static = True;
             #print(script)
         elif ref.lower().find("http") == 0:
-            script += "var questions"+div_id+"="
+            script += f"var questions{div_id}="
             url = ref
             file = urllib.request.urlopen(url)
             for line in file:
@@ -54,7 +54,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
             static = False
         else:
             #print("File detected")
-            script += "var questions"+div_id+"="
+            script += f"var questions{div_id}="
             with open(ref) as file:
                 for line in file:
                     script += line
@@ -66,8 +66,6 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     script += ''';
     '''
 
-    script += '//var mydiv=document.getElementById("testDIV");'
-    script += '//console.log(mydiv);'
 
     #display(HTML(mydiv + script))
     # return
@@ -108,20 +106,14 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
         setTimeout(() => jmscontroller.abort(), 5000);
 
         fetch("'''
-        script_end = '''", {signal})
+        script_end = f'''", {{signal}})
         .then(response => response.json())
-        .then(json => show_questions(json, '''
-        # .then(json => console.log( '''
-
-        script_end += div_id
-        script_end += '''))
-        .catch(err => {
+        .then(json => show_questions(json, {div_id}))
+        .catch(err => {{
         console.log("Fetch error or timeout");
-        show_questions(questions'''
-        script_end += div_id+", "+div_id
-        script_end += ''');
-        });
-        }
+        show_questions(questions{div_id}, {div_id});
+        }});
+        }}
         </script>
         '''
         javascript = script + url + script_end
