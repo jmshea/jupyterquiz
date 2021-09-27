@@ -7,6 +7,26 @@ import json
 
 
 def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=True):
+    '''
+    Display an interactive quiz (currently multiple-choice or numeric answer)
+    using a mix of Python and Javascript to support use in rendered notebooks
+    (especially JupyterBook, but also Voila)
+
+    Inputs:
+    ref = string, reference to quiz JSON, may be:
+          - file name
+          - URL
+          - Python dict
+          - ID of HTML element with JSON as inner HTML
+          - ID of HTML element with base64-encoded JSON as inner HTML
+
+    shuffle_questions = boolean, whether to shuffle order of questions (default False)
+
+    shuffle_answers = boolean, whether to shuffle answers for multiple-choice questions (default True)
+
+    John  M. Shea
+    9/26/2021
+    '''
     resource_package = __name__
 
     letters = string.ascii_letters
@@ -34,13 +54,13 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
         url = ""
     elif type(ref) == str:
         if ref[0] == '#':
-            script+=f'''var e=document.getElementById("{ref[1:]}");
+            script+=f'''var element=document.getElementById("{ref[1:]}");
             var questions;
             try {{
-               questions{div_id}=eval(window.atob(e.innerHTML));
+               questions{div_id}=eval(window.atob(element.innerHTML));
             }} catch(err) {{
                console.log("Fell into catch");
-               questions{div_id} = eval(e.innerHTML);
+               questions{div_id} = eval(element.innerHTML);
             }}
             console.log(questions{div_id});'''
             static = True;
