@@ -130,7 +130,7 @@ function check_mc() {
         if (version[0] == "2") {
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         } else if (version[0] == "3") {
-            MathJax.typeset();
+            MathJax.typeset([fb]);
         }
     } else {
         console.log('MathJax not detected');

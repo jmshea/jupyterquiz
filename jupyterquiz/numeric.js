@@ -67,7 +67,7 @@ function check_numeric(ths, event) {
         });
 
         if ((!done) && (defaultFB != "")) {
-            fb.textContent = jaxify(defaultFB);
+            fb.innerHTML = jaxify(defaultFB);
             //console.log("Default feedback", defaultFB);
         }
 
@@ -89,7 +89,7 @@ function check_numeric(ths, event) {
             if (version[0] == "2") {
                 MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
             } else if (version[0] == "3") {
-                MathJax.typeset();
+                MathJax.typeset([fb]);
             }
         } else {
             console.log('MathJax not detected');
