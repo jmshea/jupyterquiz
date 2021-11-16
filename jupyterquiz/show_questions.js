@@ -134,12 +134,25 @@ function show_questions(json, mydiv) {
     if (typeof MathJax != 'undefined') {
         console.log("MathJax version", MathJax.version);
         var version = MathJax.version;
-        if (version[0] == "2") {
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-        } else if (version[0] == "3") {
-            MathJax.typeset([mydiv]);
-        } else {
-            console.log("MathJax not found");
+        setTimeout(function(){
+            var version = MathJax.version;
+            console.log('After sleep, MathJax version', version);
+            if (version[0] == "2") {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            } else if (version[0] == "3") {
+                MathJax.typeset([mydiv]);
+            }
+        }, 500);
+if (typeof version == 'undefined') {
+        } else
+        {
+            if (version[0] == "2") {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            } else if (version[0] == "3") {
+                MathJax.typeset([mydiv]);
+            } else {
+                console.log("MathJax not found");
+            }
         }
     }
     return false;
