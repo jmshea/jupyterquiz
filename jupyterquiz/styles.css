@@ -6,6 +6,8 @@
     --viridian-green: #119da4ff;
     --incorrect-red: #c80202;
     --correct-green: #009113;
+    --chosen-lightBlue: #ebf2f7;
+    --unchosen: #fafafa;
 }
 
 .Quiz {
@@ -64,7 +66,7 @@
     line-height: 20pt;
     border: none;
     border-radius: 0.2rem;
-    transition: box-shadow 0.1s);
+    transition: box-shadow 0.1s;
 }
 
 .Input-text:focus {
@@ -76,6 +78,16 @@
 .MCButton {
     background: #fafafa;
     border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.SubmitButton {
+    background: #fafafa;
+    border: 5px solid #eee;
     border-radius: 10px;
     padding: 10px;
     font-size: 16px;
@@ -124,6 +136,10 @@
     color: var(--incorrect-red);
 }
 
+.chosen {
+    color: #1f091a;
+}
+
 .correct {
     color: var(--correct-green);
 }
@@ -147,9 +163,36 @@
     outline: none;
 }
 
+.chosenButton {
+    animation: chosen-anim 0.8s ease;
+    animation-fill-mode: forwards;
+    color: #fafafa;
+    box-shadow: inset 0px 0px 5px #555555;
+    outline: none;
+}
+
+.unchosenButton {
+    animation: unchosen-anim 0.8s ease;
+    animation-fill-mode: backwards;
+    color: #b08ba8;
+    outline: none;
+}
+
 @keyframes incorrect-anim {
     100% {
         background-color: var(--incorrect-red);
+    }
+}
+
+@keyframes chosen-anim {
+    100% {
+        background-color: var(--chosen-lightBlue);
+    }
+}
+
+@keyframes unchosen-anim {
+    100% {
+        background-color: var(--unchosen);
     }
 }
 

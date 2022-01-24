@@ -1,10 +1,12 @@
+// This version of multiple_chocie.js does not show the truth answer while saving a record of each click.
+
 function check_mc() {
     var id = this.id.split('-')[0];
 
-    //console.log("In check_mc(), id="+id);
-    //console.log(event.srcElement.id)           
-    //console.log(event.srcElement.dataset.correct)   
-    //console.log(event.srcElement.dataset.feedback)
+    console.log("In check_mc(), id="+id);
+    console.log(event.srcElement.id)           
+    console.log(event.srcElement.dataset.correct)   
+    console.log(event.srcElement.dataset.feedback)
 
     var label = event.srcElement;
     //console.log(label, label.nodeName);
@@ -25,103 +27,28 @@ function check_mc() {
     // Split behavior based on multiple choice vs many choice:
     var fb = document.getElementById("fb" + id);
     //console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
-    if (fb.dataset.numcorrect == 1) {
+    // if (fb.dataset.numcorrect == 1) {
+
+    // Testing for single choice only
+    if (true) {
         for (var i = 0; i < answers.length; i++) {
             var child = answers[i];
             //console.log(child);
-            child.className = "MCButton";
+            child.className = "MCButton unchosenButton";
         }
 
+        // without revealing any question info.
 
+        fb.textContent = "Answer Chosen";
+        label.className = "MCButton chosenButton";
+        fb.className = "Feedback";
+        fb.classList.add("chosen");
+    } else {
 
-        if (label.dataset.correct == "true") {
-            // console.log("Correct action");
-            if ("feedback" in label.dataset) {
-                fb.textContent = jaxify(label.dataset.feedback);
-            } else {
-                fb.textContent = "Correct!";
-            }
-            label.classList.add("correctButton");
-
-            fb.className = "Feedback";
-            fb.classList.add("correct");
-
-        } else {
-            if ("feedback" in label.dataset) {
-                fb.textContent = jaxify(label.dataset.feedback);
-            } else {
-                fb.textContent = "Incorrect -- try again.";
-            }
-            //console.log("Error action");
-            label.classList.add("incorrectButton");
-            fb.className = "Feedback";
-            fb.classList.add("incorrect");
-        }
-    }
-    else {
-        var reset = false;
-        var feedback;
-        if (label.dataset.correct == "true") {
-            if ("feedback" in label.dataset) {
-                feedback = jaxify(label.dataset.feedback);
-            } else {
-                feedback = "Correct!";
-            }
-            if (label.dataset.answered <= 0) {
-                if (fb.dataset.answeredcorrect < 0) {
-                    fb.dataset.answeredcorrect = 1;
-                    reset = true;
-                } else {
-                    fb.dataset.answeredcorrect++;
-                }
-                if (reset) {
-                    for (var i = 0; i < answers.length; i++) {
-                        var child = answers[i];
-                        child.className = "MCButton";
-                        child.dataset.answered = 0;
-                    }
-                }
-                label.classList.add("correctButton");
-                label.dataset.answered = 1;
-                fb.className = "Feedback";
-                fb.classList.add("correct");
-
-            }
-        } else {
-            if ("feedback" in label.dataset) {
-                feedback = jaxify(label.dataset.feedback);
-            } else {
-                feedback = "Incorrect -- try again.";
-            }
-            if (fb.dataset.answeredcorrect > 0) {
-                fb.dataset.answeredcorrect = -1;
-                reset = true;
-            } else {
-                fb.dataset.answeredcorrect--;
-            }
-
-            if (reset) {
-                for (var i = 0; i < answers.length; i++) {
-                    var child = answers[i];
-                    child.className = "MCButton";
-                    child.dataset.answered = 0;
-                }
-            }
-            label.classList.add("incorrectButton");
-            fb.className = "Feedback";
-            fb.classList.add("incorrect");
-        }
-
-
-        var numcorrect = fb.dataset.numcorrect;
-        var answeredcorrect = fb.dataset.answeredcorrect;
-        if (answeredcorrect >= 0) {
-            fb.textContent = feedback + " [" + answeredcorrect + "/" + numcorrect + "]";
-        } else {
-            fb.textContent = feedback + " [" + 0 + "/" + numcorrect + "]";
-        }
-
-
+        fb.textContent = "Answer Chosen";
+        label.className = "MCButton chosenButton";
+        fb.className = "Feedback";
+        fb.classList.add("chosen");
     }
 
     if (typeof MathJax != 'undefined') {
@@ -135,6 +62,29 @@ function check_mc() {
     } else {
         console.log('MathJax not detected');
     }
+
+}
+
+function record_answer() {
+    let id = this.question_id;
+    let record = document.getElementById("record" + id);
+
+    let element = 0;
+    let button = document.getElementById(`${id}-${element}`);
+
+    console.log(`${id}-${element}`);
+    console.log(button);
+
+    while (button != null) {
+        if (button.className === "MCButton chosenButton") {
+            record.textContent = button.id;
+        }
+        element++;
+        button = document.getElementById(`${id}-${element}`);
+    }
+
+    var fb = document.getElementById("fb" + id);
+    fb.textContent = `Answer Recorded`;
 
 }
 

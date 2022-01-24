@@ -170,6 +170,6 @@ def display_quiz_mc(question, answers, multiple=False, randomize=True,
 
         </script>
         """
-    # print(javascript)
+    print(javascript)
 
     display(HTML(quiz_html+javascript))

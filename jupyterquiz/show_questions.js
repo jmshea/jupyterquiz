@@ -59,10 +59,11 @@ function show_questions(json, mydiv) {
 
     // Iterate over questions
     questions.forEach((qa, index, array) => {
-        //console.log(qa.question); 
+        console.log(qa.question); 
 
-        var id = makeid(8);
-        //console.log(id);
+        var id = qa.question_id;
+        console.log("question_id: ")
+        console.log(id);
 
 
         // Create Div to contain question and answers
@@ -119,6 +120,16 @@ function show_questions(json, mydiv) {
         }
 
 
+        //Make div for submit buttom
+        var submit = document.createElement("div");
+        submit.onclick = record_answer;
+        submit.id = "submit" + id;
+        submit.question_id = id;
+        //fb.style="font-size: 20px;text-align:center;";
+        submit.className = "SubmitButton";
+        submit.textContent = "Click me to record your answer";
+        iDiv.append(submit);
+
         //Make div for feedback
         var fb = document.createElement("div");
         fb.id = "fb" + id;
@@ -127,6 +138,13 @@ function show_questions(json, mydiv) {
         fb.setAttribute("data-answeredcorrect", 0);
         fb.setAttribute("data-numcorrect", num_correct);
         iDiv.append(fb);
+
+        //Make div for record
+        var record = document.createElement("span");
+        record.id = "record" + id;
+        //fb.style="font-size: 20px;text-align:center;";
+        record.style = "display:none";
+        iDiv.append(record);
 
 
     });
