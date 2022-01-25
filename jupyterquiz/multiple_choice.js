@@ -1,19 +1,16 @@
 // This version of multiple_chocie.js does not show the truth answer while saving a record of each click.
 
-function check_mc() {
-    var id = this.id.split('-')[0];
+var previous_answers;
 
-    console.log("In check_mc(), id="+id);
-    console.log(event.srcElement.id)           
-    console.log(event.srcElement.dataset.correct)   
-    console.log(event.srcElement.dataset.feedback)
+function check_mc(current_object) {
+    var id = current_object.id.split('-')[0];
 
     var label = event.srcElement;
     //console.log(label, label.nodeName);
     var depth = 0;
     while ((label.nodeName != "LABEL") && (depth < 20)) {
         label = label.parentElement;
-        console.log(depth, label);
+        // console.log(depth, label);
         depth++;
     }
 
@@ -65,6 +62,31 @@ function check_mc() {
 
 }
 
+function make_selection() {
+    let current_object = this;
+    var id = current_object.id.split('-')[0];
+    if (this.className === "MCButton chosenButton") {
+        this.className = "MCButton";
+        var fb = document.getElementById("fb" + id);
+        fb.textContent = `Answer un-chosen`;
+    } else {
+        check_mc(this);
+    }
+}
+
+function handle_output(out) {
+    // save the previous read in answer to global var.
+    previous_answers = out.content.text.split("\n");
+}
+
+function read_in_record() {
+    var code_input = `f = open("record.txt", "r")`;
+    var kernel = IPython.notebook.kernel;
+    var callbacks = { 'iopub' : {'output' : handle_output}};
+    kernel.execute(code_input)
+    var msg_id = kernel.execute("print(f.read())", callbacks, {silent:false});
+}
+
 function record_answer() {
     let id = this.question_id;
     let record = document.getElementById("record" + id);
@@ -72,8 +94,8 @@ function record_answer() {
     let element = 0;
     let button = document.getElementById(`${id}-${element}`);
 
-    console.log(`${id}-${element}`);
-    console.log(button);
+    // console.log(`${id}-${element}`);
+    // console.log(button);
 
     while (button != null) {
         if (button.className === "MCButton chosenButton") {
@@ -86,9 +108,37 @@ function record_answer() {
     var fb = document.getElementById("fb" + id);
     fb.textContent = `Answer Recorded`;
 
+    // Use IPython to save the result of the selection
+    let kernel = IPython.notebook.kernel;
+    var command = `record_quiz("${id}", "${record.textContent}")`;
+    kernel.execute(command);
+
 }
 
+
+function get_last_record(quiz_id) {
+    for (let i = previous_answers.length - 1; i >= 0; i--) {
+
+        let entry;
+        if (previous_answers[i] === undefined) {
+            continue;
+        } 
+        try {
+            entry = eval(`(${previous_answers[i]})`);
+        } catch (error) {
+            continue;
+        }
+
+        if (entry["quiz_id"] === quiz_id) {
+            return entry["option_id"];
+        }
+    }
+}
+
+
 function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
+    read_in_record();
+    // console.log(previous_answers);
     var shuffled;
     if (shuffle_answers == "True") {
         //console.log(shuffle_answers+" read as true");
@@ -101,7 +151,8 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
 
     var num_correct = 0;
 
-
+    // for single choice
+    let changed = false;
 
     shuffled.forEach((item, index, ans_array) => {
         //console.log(answer);
@@ -115,9 +166,47 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
 
         //Make label for input element
         var lab = document.createElement("label");
-        lab.className = "MCButton";
         lab.id = id + '-' + index;
-        lab.onclick = check_mc;
+
+        let last_response = get_last_record(id);
+
+        if (lab.id === last_response) {
+            lab.className = "MCButton chosenButton";
+        } else {
+            lab.className = "MCButton";
+        }
+
+        // for (let i = previous_answers.length - 1; i >= 0; i--) {
+
+        //     let entry;
+
+        //     if (previous_answers[i] === undefined) {
+        //         continue;
+        //     } 
+
+        //     try {
+        //         entry = eval(`(${previous_answers[i]})`);
+        //     } catch (error) {
+        //         continue;
+        //     }
+
+        //     // for single choice
+
+        //     if (changed) {
+        //         lab.className = "MCButton";
+        //     }
+
+        //     if (entry["quiz_id"] === id || !changed) {
+        //         if (entry["option_id"] === lab.id) {
+        //             lab.className = "MCButton chosenButton";
+        //             console.log("Changed");
+        //             changed = true;
+        //         }
+        //     }
+        // }
+
+
+        lab.onclick = make_selection;
         var aSpan = document.createElement('span');
         aSpan.classsName = "";
         //qDiv.id="quizQn"+id+index;
@@ -139,10 +228,8 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
             codePre.append(codeCode);
             codeCode.innerHTML = item.code;
             lab.append(codeSpan);
-            //console.log(codeSpan);
         }
 
-        //lab.textContent=item.answer;
 
         // Set the data attributes for the answer
         lab.setAttribute('data-correct', item.correct);

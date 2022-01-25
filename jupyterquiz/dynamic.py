@@ -138,4 +138,5 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
         javascript = script 
 
     # print(javascript)
-    display(HTML(mydiv + styles + javascript))
+    # display(HTML(mydiv + styles + javascript))
+    return mydiv + styles + javascript
