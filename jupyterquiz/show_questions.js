@@ -1,3 +1,5 @@
+var previous_answers;
+
 function jaxify(string) {
     var mystring = string;
 
@@ -38,6 +40,7 @@ function jaxify(string) {
 
 
 function show_questions(json, mydiv) {
+    read_in_record();
     //var mydiv=document.getElementById(myid);
     var shuffle_questions = mydiv.dataset.shufflequestions;
     var num_questions = mydiv.dataset.numquestions;
@@ -125,7 +128,6 @@ function show_questions(json, mydiv) {
         submit.onclick = record_answer;
         submit.id = "submit" + id;
         submit.question_id = id;
-        //fb.style="font-size: 20px;text-align:center;";
         submit.className = "SubmitButton";
         submit.textContent = "Click me to record your answer";
         iDiv.append(submit);

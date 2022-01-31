@@ -137,7 +137,21 @@
 }
 
 .chosen {
-    color: #1f091a;
+    font-size: 16px;
+    color: green;
+    display: grid;
+    background: #fafafa;
+    border: 5px solid #eee;
+    border-radius: 10px;
+}
+
+.pending {
+    font-size: 16px;
+    color: #F29339;
+    display: grid;
+    background: #fafafa;
+    border: 5px solid #eee;
+    border-radius: 10px;
 }
 
 .correct {
@@ -166,15 +180,15 @@
 .chosenButton {
     animation: chosen-anim 0.8s ease;
     animation-fill-mode: forwards;
-    color: #fafafa;
+    color: #000000;
     box-shadow: inset 0px 0px 5px #555555;
     outline: none;
 }
 
 .unchosenButton {
     animation: unchosen-anim 0.8s ease;
-    animation-fill-mode: backwards;
-    color: #b08ba8;
+    animation-fill-mode: forwards;
+    color: #000000;
     outline: none;
 }
 

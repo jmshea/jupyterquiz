@@ -1,6 +1,7 @@
 // This version of multiple_chocie.js does not show the truth answer while saving a record of each click.
 
 var previous_answers;
+var isSingleChoice;
 
 function check_mc(current_object) {
     var id = current_object.id.split('-')[0];
@@ -27,21 +28,19 @@ function check_mc(current_object) {
     // if (fb.dataset.numcorrect == 1) {
 
     // Testing for single choice only
+    console.log(isSingleChoice)
     if (true) {
         for (var i = 0; i < answers.length; i++) {
             var child = answers[i];
             //console.log(child);
             child.className = "MCButton unchosenButton";
         }
-
         // without revealing any question info.
-
         fb.textContent = "Answer Chosen";
         label.className = "MCButton chosenButton";
         fb.className = "Feedback";
-        fb.classList.add("chosen");
+        fb.classList.add("pending");
     } else {
-
         fb.textContent = "Answer Chosen";
         label.className = "MCButton chosenButton";
         fb.className = "Feedback";
@@ -107,16 +106,26 @@ function record_answer() {
 
     var fb = document.getElementById("fb" + id);
     fb.textContent = `Answer Recorded`;
+    fb.className = "Feedback chosen"
 
     // Use IPython to save the result of the selection
     let kernel = IPython.notebook.kernel;
+    // can direcly use imported method on jupyter notebook
     var command = `record_quiz("${id}", "${record.textContent}")`;
     kernel.execute(command);
+
+    
 
 }
 
 
 function get_last_record(quiz_id) {
+    read_in_record();
+
+    if (previous_answers === undefined) {
+        return;
+    }
+
     for (let i = previous_answers.length - 1; i >= 0; i--) {
 
         let entry;
@@ -137,17 +146,11 @@ function get_last_record(quiz_id) {
 
 
 function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
+    // isSingleChoice ture means only a single answer is ture
     read_in_record();
-    // console.log(previous_answers);
-    var shuffled;
-    if (shuffle_answers == "True") {
-        //console.log(shuffle_answers+" read as true");
-        shuffled = getRandomSubarray(qa.answers, qa.answers.length);
-    } else {
-        //console.log(shuffle_answers+" read as false");
-        shuffled = qa.answers;
-    }
-
+    // stop shuffling answer, unless we want unstable 
+    // record
+    shuffled = qa.answers;
 
     var num_correct = 0;
 
@@ -175,36 +178,6 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
         } else {
             lab.className = "MCButton";
         }
-
-        // for (let i = previous_answers.length - 1; i >= 0; i--) {
-
-        //     let entry;
-
-        //     if (previous_answers[i] === undefined) {
-        //         continue;
-        //     } 
-
-        //     try {
-        //         entry = eval(`(${previous_answers[i]})`);
-        //     } catch (error) {
-        //         continue;
-        //     }
-
-        //     // for single choice
-
-        //     if (changed) {
-        //         lab.className = "MCButton";
-        //     }
-
-        //     if (entry["quiz_id"] === id || !changed) {
-        //         if (entry["option_id"] === lab.id) {
-        //             lab.className = "MCButton chosenButton";
-        //             console.log("Changed");
-        //             changed = true;
-        //         }
-        //     }
-        // }
-
 
         lab.onclick = make_selection;
         var aSpan = document.createElement('span');
