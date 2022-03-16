@@ -42,6 +42,12 @@ Quesitons can be loaded from:
 
 Question source data can be stored in any Markdown cell in a hidden HTML element (such as a span with the display style set to "none"). Questions can be stored as either JSON or base64-encoded JSON (to make them non-human readable). Please see the notebook [HideQuiz.ipynb](HideQuiz.ipynb) for examples of how to use this.
 
+## Tool for making Multiple/Many Choice Questions
+
+Dr. WJB Mattingly (@wjbmattingly) has made a [Streamlit App for creating JupyterQuiz question files](https://github.com/wjbmattingly/quiz-generator) in an interactive way without having to edit a JSON file.
+It currently supports multiple/many choice questions.
+
+
 ## Installation 
 
 *JupyterQuiz* is available via pip:
