@@ -5,7 +5,7 @@
 * The other part of this effort is my interactive self-assessment quiz tool, 
 [JupyterCards](https://github.com/jmshea/jupytercards).  
 * You can see both tools in action in my 
-(in-progress) textbook [Introduction to Data Science for Engineers](https://github.com/jmshea/intro-data-science-for-engineers).
+(in-progress) textbook [Foundations of Data Science with Python](https://jmshea.github.io/Foundations-of-Data-Science-with-Python/).
 
 These animated GIFs illustrate the two basic question types in *JupyterQuiz*:
 
@@ -41,6 +41,12 @@ Quesitons can be loaded from:
 **New as of version 1.6 (9/26/2021): You can now embed the question source (most importantly, the answers) in Jupyter Notebook so that they will not be directly visibile to users!**
 
 Question source data can be stored in any Markdown cell in a hidden HTML element (such as a span with the display style set to "none"). Questions can be stored as either JSON or base64-encoded JSON (to make them non-human readable). Please see the notebook [HideQuiz.ipynb](HideQuiz.ipynb) for examples of how to use this.
+
+## Tool for making Multiple/Many Choice Questions
+
+Dr. WJB Mattingly (@wjbmattingly) has made a [Streamlit App for creating JupyterQuiz question files](https://github.com/wjbmattingly/quiz-generator) in an interactive way without having to edit a JSON file.
+It currently supports multiple/many choice questions.
+
 
 ## Installation 
 
