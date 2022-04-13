@@ -115,7 +115,7 @@ def display_quiz_mc(question, answers, multiple=False, randomize=True,
                         }
                     }
                     event.srcElement.style.background="#ffe8e8";
-                    feedback.style.color="#DC2329";
+                    feedback.style.color="#DC1392";
                 }
 
 
