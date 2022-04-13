@@ -17,7 +17,7 @@ def display_quiz_mc(question, answers, multiple=False, randomize=True,
       font-size: 20px;
       border-radius: 10px;">
       '''
-    question_end = '</div>'
+    question_end = 'bbbbbbbbbb</div>'
 
     answer_start = '''
       <!-- ANSWER -->
