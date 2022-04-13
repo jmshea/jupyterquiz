@@ -49,9 +49,7 @@ def display_quiz_mc(question, answers, multiple=False, randomize=True,
     for i, answer in enumerate(answers):
         #quiz_html+=input_start+str(i)+ '" data-correct="' +str(answer["correct"]) \
         quiz_html += input_start+str(i) + input_end
-        quiz_html += label_start+str(i) \
-            + '" data-correct="' + str(answer["correct"]) \
-            + '" data-answered=0>'+answer["answer"]+label_end
+        quiz_html += label_start+str(i)
         if answer["correct"]:
             num_correct += 1
 
