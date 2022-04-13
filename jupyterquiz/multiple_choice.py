@@ -51,7 +51,6 @@ def display_quiz_mc(question, answers, multiple=False, randomize=True,
         quiz_html += input_start+str(i) + input_end
         quiz_html += label_start+str(i) \
             + '" data-correct="' + str(answer["correct"]) \
-            + '" data-feedback="' + str(answer["feedback"]) \
             + '" data-answered=0>'+answer["answer"]+label_end
         if answer["correct"]:
             num_correct += 1
