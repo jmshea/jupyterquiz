@@ -96,7 +96,7 @@ def display_quiz_mc(question, answers, multiple=False, randomize=True,
                         }
                         event.srcElement.style.background="#d8ffc4";
                         event.srcElement.dataset.answered=1;
-                        feedback.style.color="#009113";
+                        feedback.style.color="#1392dc";
 
                     }
                 } else {
@@ -115,7 +115,7 @@ def display_quiz_mc(question, answers, multiple=False, randomize=True,
                         }
                     }
                     event.srcElement.style.background="#ffe8e8";
-                    feedback.style.color="#DC1392";
+                    feedback.style.color="#1392dc";
                 }
 
 
@@ -154,10 +154,10 @@ def display_quiz_mc(question, answers, multiple=False, randomize=True,
                 feedback.innerHTML=event.srcElement.dataset.feedback;
                 if (event.srcElement.dataset.correct=="True")   {
                     event.srcElement.style.background="#d8ffc4";
-                    feedback.style.color="#009113";
+                    feedback.style.color="#1392dc";
                 } else {
                     event.srcElement.style.background="#ffe8e8";
-                    feedback.style.color="#DC2329";
+                    feedback.style.color="#1392dc";
                 }
 
 
