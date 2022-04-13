@@ -1,11 +1,11 @@
 :root {
-    --medium-slate-blue: #6f78ffff;
-    --orange-pantone: #f75c03ff;
-    --russian-violet: #392061ff;
-    --maximum-yellow-red: #ffc857ff;
-    --viridian-green: #119da4ff;
-    --incorrect-red: #c80202;
-    --correct-green: #009113;
+    --medium-slate-blue: ##1392dc;
+    --orange-pantone: ##1392dc;
+    --russian-violet: ##1392dc;
+    --maximum-yellow-red: ##1392dc;
+    --viridian-green: ##1392dc;
+    --incorrect-red: ##1392dc;
+    --correct-green: ##1392dc;
 }
 
 .Quiz {
