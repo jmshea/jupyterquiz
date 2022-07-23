@@ -16,7 +16,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     ref = string, reference to quiz JSON, may be:
           - file name
           - URL
-          - Python dict
+          - Python list
           - ID of HTML element with JSON as inner HTML
           - ID of HTML element with base64-encoded JSON as inner HTML
 
@@ -46,13 +46,13 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     script = '<script type="text/Javascript">'
 
 
-    if type(ref) == list:
+    if isinstance(ref, list):
         #print("List detected. Assuming JSON")
         script += f"var questions{div_id}="
         script += json.dumps(ref)
         static = True
         url = ""
-    elif type(ref) == str:
+    elif isinstance(ref, str):
         if ref[0] == '#':
             script+=f'''var element=document.getElementById("{ref[1:]}");
             var questions;
@@ -65,7 +65,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
             console.log(questions{div_id});'''
             static = True;
             #print(script)
-        elif ref.lower().find("http") == 0:
+        elif not ref.lower().find("http"):
             script += f"var questions{div_id}="
             url = ref
             file = urllib.request.urlopen(url)
