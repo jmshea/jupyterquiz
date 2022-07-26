@@ -26,31 +26,32 @@ function check_mc() {
     // Split behavior based on multiple choice vs many choice:
     var fb = document.getElementById("fb" + id);
 
-    // What follows is for the saved responses stuff
-    var outerContainer = fb.parentElement.parentElement;
-    var responsesContainer = document.getElementById("responses" + outerContainer.id);
-    if (responsesContainer) {
-        //console.log(responsesContainer);
-        var response = label.firstChild.innerText;
-        if (label.querySelector(".QuizCode")){
-            response+= label.querySelector(".QuizCode").firstChild.innerText;
-        }
-        console.log(response);
-        //console.log(document.getElementById("quizWrap"+id));
-        var qnum = document.getElementById("quizWrap"+id).dataset.qnum;
-        console.log("Question " + qnum);
-        //console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
-        var responses=JSON.parse(responsesContainer.dataset.responses);
-        console.log(responses);
-        responses[qnum]= response;
-        responsesContainer.setAttribute('data-responses', JSON.stringify(responses));
-        printResponses(responsesContainer);
-    }
-
 
 
 
     if (fb.dataset.numcorrect == 1) {
+        // What follows is for the saved responses stuff
+        var outerContainer = fb.parentElement.parentElement;
+        var responsesContainer = document.getElementById("responses" + outerContainer.id);
+        if (responsesContainer) {
+            //console.log(responsesContainer);
+            var response = label.firstChild.innerText;
+            if (label.querySelector(".QuizCode")){
+                response+= label.querySelector(".QuizCode").firstChild.innerText;
+            }
+            console.log(response);
+            //console.log(document.getElementById("quizWrap"+id));
+            var qnum = document.getElementById("quizWrap"+id).dataset.qnum;
+            console.log("Question " + qnum);
+            //console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
+            var responses=JSON.parse(responsesContainer.dataset.responses);
+            console.log(responses);
+            responses[qnum]= response;
+            responsesContainer.setAttribute('data-responses', JSON.stringify(responses));
+            printResponses(responsesContainer);
+        }
+        // End code to preserve responses
+        
         for (var i = 0; i < answers.length; i++) {
             var child = answers[i];
             //console.log(child);
@@ -86,7 +87,7 @@ function check_mc() {
     else {
         var reset = false;
         var feedback;
-        if (label.dataset.correct == "true") {
+         if (label.dataset.correct == "true") {
             if ("feedback" in label.dataset) {
                 feedback = jaxify(label.dataset.feedback);
             } else {
@@ -136,6 +137,37 @@ function check_mc() {
             fb.className = "Feedback";
             fb.classList.add("incorrect");
         }
+        // What follows is for the saved responses stuff
+        var outerContainer = fb.parentElement.parentElement;
+        var responsesContainer = document.getElementById("responses" + outerContainer.id);
+        if (responsesContainer) {
+            //console.log(responsesContainer);
+            var response = label.firstChild.innerText;
+            if (label.querySelector(".QuizCode")){
+                response+= label.querySelector(".QuizCode").firstChild.innerText;
+            }
+            console.log(response);
+            //console.log(document.getElementById("quizWrap"+id));
+            var qnum = document.getElementById("quizWrap"+id).dataset.qnum;
+            console.log("Question " + qnum);
+            //console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
+            var responses=JSON.parse(responsesContainer.dataset.responses);
+            if (label.dataset.correct == "true") {
+                if (typeof(responses[qnum]) == "object"){
+                    if (!responses[qnum].includes(response))
+                        responses[qnum].push(response);
+                } else{
+                    responses[qnum]= [ response ];
+                }
+            } else {
+                responses[qnum]= response;
+            }
+            console.log(responses);
+            responsesContainer.setAttribute('data-responses', JSON.stringify(responses));
+            printResponses(responsesContainer);
+        }
+        // End save responses stuff
+
 
 
         var numcorrect = fb.dataset.numcorrect;

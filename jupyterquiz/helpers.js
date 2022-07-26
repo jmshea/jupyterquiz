@@ -23,12 +23,12 @@ function getRandomSubarray(arr, size) {
 
 function printResponses(responsesContainer) {
     var responses=JSON.parse(responsesContainer.dataset.responses);
-    var stringResponses='<B>IMPORTANT!</B>To preserve this answer sequence for submission, when you have finalized your answers: <ol> <li> Copy the text after "Answer String"</li> <li> Double click on the cell directly below the Answer String, labeled "Replace Me"</li> <li> Select the whole "Replace Me" text</li> <li> Paste in your answer string and press shift-Enter.<br><br><b>Answer String:</b> ';
+    var stringResponses='<B>IMPORTANT!</B>To preserve this answer sequence for submission, when you have finalized your answers: <ol> <li> Copy the text in this cell below "Answer String"</li> <li> Double click on the cell directly below the Answer String, labeled "Replace Me"</li> <li> Select the whole "Replace Me" text</li> <li> Paste in your answer string and press shift-Enter.</li><li>Save the notebook using the save icon or File->Save Notebook menu item</li></ul><br><br><br><b>Answer String:</b><br> ';
     console.log(responses);
     responses.forEach((response, index) => {
         if (response) {
             console.log(index + ': ' + response);
-            stringResponses+= index + ': ' + response +";;";
+            stringResponses+= index + ': ' + response +"<BR>";
         }
     });
     responsesContainer.innerHTML=stringResponses;

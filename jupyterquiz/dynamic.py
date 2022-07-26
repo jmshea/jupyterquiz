@@ -29,6 +29,10 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     John  M. Shea
     9/26/2021
     '''
+
+
+    assert not (shuffle_questions and preserve_responses), \
+        "This package does not support preserving responses if questions are shuffled."
     resource_package = __name__
 
     letters = string.ascii_letters
