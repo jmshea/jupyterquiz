@@ -20,6 +20,8 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
           - ID of HTML element with JSON as inner HTML
           - ID of HTML element with base64-encoded JSON as inner HTML
 
+    num = number of questions to present. If this option is chosen, the set of questions will be selected at random
+
     shuffle_questions = boolean, whether to shuffle order of questions (default False)
 
     shuffle_answers = boolean, whether to shuffle answers for multiple-choice questions (default True)
@@ -30,9 +32,11 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     9/26/2021
     '''
 
-
     assert not (shuffle_questions and preserve_responses), \
         "This package does not support preserving responses if questions are shuffled."
+    assert num==1_000_000 or (not preserve_responses), \
+        "This package does not support preserving responses when num is set because num changes the order of questions"
+
     resource_package = __name__
 
     letters = string.ascii_letters
