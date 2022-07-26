@@ -1,6 +1,7 @@
 function check_mc() {
     var id = this.id.split('-')[0];
-
+    //var response = this.id.split('-')[1];
+    //console.log(response);
     //console.log("In check_mc(), id="+id);
     //console.log(event.srcElement.id)           
     //console.log(event.srcElement.dataset.correct)   
@@ -24,7 +25,31 @@ function check_mc() {
 
     // Split behavior based on multiple choice vs many choice:
     var fb = document.getElementById("fb" + id);
-    //console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
+
+    // What follows is for the saved responses stuff
+    var outerContainer = fb.parentElement.parentElement;
+    var responsesContainer = document.getElementById("responses" + outerContainer.id);
+    if (responsesContainer) {
+        //console.log(responsesContainer);
+        var response = label.firstChild.innerText;
+        if (label.querySelector(".QuizCode")){
+            response+= label.querySelector(".QuizCode").firstChild.innerText;
+        }
+        console.log(response);
+        //console.log(document.getElementById("quizWrap"+id));
+        var qnum = document.getElementById("quizWrap"+id).dataset.qnum;
+        console.log("Question " + qnum);
+        //console.log(id, ", got numcorrect=",fb.dataset.numcorrect);
+        var responses=JSON.parse(responsesContainer.dataset.responses);
+        console.log(responses);
+        responses[qnum]= response;
+        responsesContainer.setAttribute('data-responses', JSON.stringify(responses));
+        printResponses(responsesContainer);
+    }
+
+
+
+
     if (fb.dataset.numcorrect == 1) {
         for (var i = 0; i < answers.length; i++) {
             var child = answers[i];

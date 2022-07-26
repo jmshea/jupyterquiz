@@ -12,4 +12,4 @@ All files in the package are distributed under the MIT License
 '''
 
 __version__ = '1.8'
-from .dynamic import display_quiz
+from .dynamic import display_quiz, capture_responses

@@ -6,7 +6,7 @@ import urllib
 import json
 
 
-def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=True):
+def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=True, preserve_responses=False):
     '''
     Display an interactive quiz (currently multiple-choice or numeric answer)
     using a mix of Python and Javascript to support use in rendered notebooks
@@ -23,6 +23,8 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     shuffle_questions = boolean, whether to shuffle order of questions (default False)
 
     shuffle_answers = boolean, whether to shuffle answers for multiple-choice questions (default True)
+    
+    preserve_responses = boolean, whether to output the user responses in a way that is preserved upon reload of the notebook (default False)
 
     John  M. Shea
     9/26/2021
@@ -35,6 +37,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
 
     mydiv = f"""<div id="{div_id}" data-shufflequestions="{str(shuffle_questions)}"
                data-shuffleanswers="{str(shuffle_answers)}"
+               data-preserveresponses="{str(preserve_responses)}"
                data-numquestions="{str(num)}"> """
     #print(mydiv)
 
@@ -139,3 +142,74 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
 
     # print(javascript)
     display(HTML(mydiv + styles + javascript))
+    #return div_id
+
+
+
+
+def capture_responses(prev_div_id):
+    '''
+
+    This is prototype code only. I never got it work because the HTML that I
+    update programmatically in this function is not preserved when the code is reloaded.
+    For now, going to require the user to manually copy and paste their answer string to
+    a new block.
+
+
+    John  M. Shea
+    7/25/2022
+    '''
+    resource_package = __name__
+
+    letters = string.ascii_letters
+    div_id = ''.join(random.choice(letters) for i in range(12))
+    #print(div_id)
+
+    mydiv = f"""<div id="{div_id}" ></div> """
+    javascript= f"""
+    <script type="text/Javascript">
+        {{
+    mydiv={div_id}
+    nB_cell = mydiv.closest(".jp-Notebook-cell");
+    //prev_cell = nb_cell.previousElementSibling.previousElementSibling;
+    //prev_cell = document.getElementById({prev_div_id});
+    prev_cell = {prev_div_id};
+    console.log(prev_cell);
+    responses = prev_cell.querySelector(".JCResponses");
+    //console.log(responses);
+    if (responses) {{
+      //console.log(responses);
+      mydiv.setAttribute("data-responses", responses.dataset.responses);
+      //printResponses(mydiv); 
+    var iDiv = document.createElement('div');
+    iDiv.id = 'responses' + mydiv.id;
+    iDiv.innerText=responses.dataset.responses;
+    mydiv.appendChild(iDiv);
+    }} else {{
+      mydiv.setAttribute("data-responses", "[]");
+      mydiv.innerText = 'No Responses Found';
+    }}
+       }}
+    </script>
+    """
+    #print(mydiv)
+    #print(javascript)
+    display(HTML(mydiv + javascript))
+    #display(Javascript(javascript))
+
+
+    """
+    var mydiv = {div_id};
+
+    if (responses) {
+      console.log(responses);
+      mydiv.setAttribute("data-responses", responses.dataset.responses);
+      printResponses(mydiv); 
+    } else {
+      mydiv.innerText = 'No Responses Found';
+    }
+    //var iDiv = document.createElement('div');
+    //iDiv.id = 'responses' + mydiv.id;
+    //iDiv.innerText=responses.dataset.responses;
+    //mydiv.appendChild(iDiv);
+ """

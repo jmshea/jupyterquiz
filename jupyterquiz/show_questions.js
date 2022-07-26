@@ -38,6 +38,7 @@ function jaxify(string) {
 
 
 function show_questions(json, mydiv) {
+    console.log('show_questions');
     //var mydiv=document.getElementById(myid);
     var shuffle_questions = mydiv.dataset.shufflequestions;
     var num_questions = mydiv.dataset.numquestions;
@@ -67,14 +68,16 @@ function show_questions(json, mydiv) {
 
         // Create Div to contain question and answers
         var iDiv = document.createElement('div');
-        iDiv.id = 'quizWrap' + id + index;
+        //iDiv.id = 'quizWrap' + id + index;
+        iDiv.id = 'quizWrap' + id;
         iDiv.className = 'Quiz';
+        iDiv.setAttribute('data-qnum', index);
         mydiv.appendChild(iDiv);
         // iDiv.innerHTML=qa.question;
 
         var outerqDiv = document.createElement('div');
         outerqDiv.id = "OuterquizQn" + id + index;
-        //qDiv.textContent=qa.question;
+
         iDiv.append(outerqDiv);
 
         // Create div to contain question part
@@ -82,6 +85,7 @@ function show_questions(json, mydiv) {
         qDiv.id = "quizQn" + id + index;
         //qDiv.textContent=qa.question;
         qDiv.innerHTML = jaxify(qa.question);
+
         outerqDiv.append(qDiv);
 
         // Create div for code inside question
@@ -130,7 +134,22 @@ function show_questions(json, mydiv) {
 
 
     });
-    //console.log("At end of show_questions");
+    var preserveResponses = mydiv.dataset.preserveresponses;
+    console.log(preserveResponses);
+    if (preserveResponses) {
+        // Create Div to contain record of answers
+        var iDiv = document.createElement('div');
+        iDiv.id = 'responses' + mydiv.id;
+        iDiv.className = 'JCResponses';
+        // Create a place to store responses as an empty array
+        iDiv.setAttribute('data-responses', '[]');
+
+        // Dummy Text
+        iDiv.innerHTML="<b>Select your answers and then follow the directions that will appear here.</b>"
+        //iDiv.className = 'Quiz';
+        mydiv.appendChild(iDiv);
+    }
+//console.log("At end of show_questions");
     if (typeof MathJax != 'undefined') {
         console.log("MathJax version", MathJax.version);
         var version = MathJax.version;
