@@ -34,13 +34,33 @@ It currently supports two types of quiz questions:
 Each type of question offers different ways to provide feedback to help users understand what they did wrong (or right).
 
 Quesitons can be loaded from:
-* a Python list of dict,
+* a Python list of dicts,
 * a JSON local file,
 * via a URL to a JSON file.
 
 **New as of version 1.6 (9/26/2021): You can now embed the question source (most importantly, the answers) in Jupyter Notebook so that they will not be directly visibile to users!**
 
 Question source data can be stored in any Markdown cell in a hidden HTML element (such as a span with the display style set to "none"). Questions can be stored as either JSON or base64-encoded JSON (to make them non-human readable). Please see the notebook [HideQuiz.ipynb](HideQuiz.ipynb) for examples of how to use this.
+
+## Quiz options
+
+JupyterQuiz supports a few options:
+* num = Number of questions to present. If this option is chosen, the set of questions will be selected at random.
+* shuffle_questions = boolean, whether to shuffle order of questions (default False)
+* shuffle_answers = boolean, whether to shuffle answers for multiple-choice questions (default True)
+* preserve_responses = boolean, whether to output the user responses in a way that is preserved upon reload of the notebook (default False) -- see below
+
+## Preserving student responses
+
+**New as of version 2.0 (7/26/2022): There is now code to enable preserving student responses (for instance, for checking/grading their quizzes). If you want to use this functionality, please read this carefully!**
+
+To enable this behavior, set `preserve_responses=True` in `display_quiz()`
+
+This option produces a text ouptut that consists of a question number (based on the question order) along with the chosen answer. Instructions are given at the end of the quiz on how to copy the text output and paste it into a pre-prepared Markdown cell. See [preserve-responses.ipynb](preserve-responses.ipynb) for an example.
+
+*The requirement that the student copy and paste the text output to preserve it is because of limitations in the exchange of information from the JavaScript side to the Python side. As far as I know, the only way around this requires a plug-in, and I do not want to require that. I will continue to investigate solutions to this in the future.*
+
+This option is not compatible with `shuffle_questions = True` or setting `num` because these result in the order of the questions being random, which makes no sense when reporting answers vs question number.
 
 ## Tool for making Multiple/Many Choice Questions
 
