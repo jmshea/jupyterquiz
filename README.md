@@ -21,9 +21,9 @@ These animated GIFs illustrate the two basic question types in *JupyterQuiz*:
 
 ---
 
-For more examples with various types of functionality, check out the Review section of Chapter 3 of the *Introduction to Data Science for Engineers* Jupyter Book: 
+For more examples with various types of functionality, check out the Review section of Chapter 3 of the *Foundations of Data Science with Python* Jupyter Book: 
 
-[Example of JupyterQuiz in Action](https://jmshea.github.io/intro-data-science-for-engineers/03-first-data/review.html)
+[Example of JupyterQuiz in Action](https://jmshea.github.io/Foundations-of-Data-Science-with-Python/03-first-data/review.html)
 
 The notebook [test.ipynb](test.ipynb) shows more features but must be run on your own local Jupyter or in nbviewer -- GitHub only renders the static HTML that does not include the interactive quizzes. (If viewing on GitHub, there should be a little circle with a minus sign at the top of the file that offers you the ability to launch the notebook in nbviewer.)
 
@@ -159,7 +159,7 @@ Numerical questions consist of a Question, an optional Precision, and one or mor
     }
 ```
 
-If you find this useful... 
- <a href="https://www.buymeacoffee.com/jshea" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+<!-- If you find this useful... 
+ <a href="https://www.buymeacoffee.com/jshea" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a> -->
  
 
