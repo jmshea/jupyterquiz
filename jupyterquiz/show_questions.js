@@ -136,7 +136,9 @@ function show_questions(json, mydiv) {
     });
     var preserveResponses = mydiv.dataset.preserveresponses;
     console.log(preserveResponses);
-    if (preserveResponses) {
+    console.log(preserveResponses == "true");
+    if (preserveResponses == "true") {
+        console.log(preserveResponses);
         // Create Div to contain record of answers
         var iDiv = document.createElement('div');
         iDiv.id = 'responses' + mydiv.id;

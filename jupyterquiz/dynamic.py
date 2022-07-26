@@ -35,9 +35,16 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     div_id = ''.join(random.choice(letters) for i in range(12))
     #print(div_id)
 
+    if preserve_responses:
+        preserve_json = "true"
+    else:
+        preserve_json = "false"
+
+
+
     mydiv = f"""<div id="{div_id}" data-shufflequestions="{str(shuffle_questions)}"
                data-shuffleanswers="{str(shuffle_answers)}"
-               data-preserveresponses="{str(preserve_responses)}"
+               data-preserveresponses="{preserve_json}"
                data-numquestions="{str(num)}"> """
     #print(mydiv)
 
