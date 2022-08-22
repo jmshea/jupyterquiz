@@ -64,8 +64,6 @@ def display_quiz_mc(question, answers, multiple=False, randomize=True,
     quiz_html += str(num_correct) + '''></div>'''
 
     javascript = """
-        <script type="text/Javascript">
-
         function check"""
     javascript += feedback_id
     if multiple:
@@ -134,8 +132,6 @@ def display_quiz_mc(question, answers, multiple=False, randomize=True,
 
 
             }
-
-        </script>
         """
     else:
         javascript += """(){
@@ -162,14 +158,10 @@ def display_quiz_mc(question, answers, multiple=False, randomize=True,
                     event.srcElement.style.background="#ffe8e8";
                     feedback.style.color="#DC2329";
                 }
-
-
-
-
             }
 
-        </script>
         """
     # print(javascript)
 
-    display(HTML(quiz_html+javascript))
+    display(HTML(quiz_html))
+    display(Javascript(javascript))
