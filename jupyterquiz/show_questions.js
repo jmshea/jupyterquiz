@@ -1,10 +1,10 @@
 function jaxify(string) {
     var mystring = string;
 
-    count = 0;
+    var count = 0;
     var loc = mystring.search(/([^\\]|^)(\$)/);
 
-    count2 = 0;
+    var count2 = 0;
     var loc2 = mystring.search(/([^\\]|^)(\$\$)/);
 
     //console.log(loc);
