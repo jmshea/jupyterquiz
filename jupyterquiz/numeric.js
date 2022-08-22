@@ -7,14 +7,14 @@ function check_numeric(ths, event) {
 
         var submission = ths.value;
         if (submission.indexOf('/') != -1) {
-            sub_parts = submission.split('/');
+            var sub_parts = submission.split('/');
             //console.log(sub_parts);
             submission = sub_parts[0] / sub_parts[1];
         }
         //console.log("Reader entered", submission);
 
         if ("precision" in ths.dataset) {
-            precision = ths.dataset.precision;
+            var precision = ths.dataset.precision;
             // console.log("1:", submission)
             submission = Math.round((1 * submission + Number.EPSILON) * 10 ** precision) / 10 ** precision;
             // console.log("Rounded to ", submission, " precision=", precision  );
@@ -29,7 +29,7 @@ function check_numeric(ths, event) {
         fb.style.display = "none";
         fb.textContent = "Incorrect -- try again.";
 
-        answers = JSON.parse(ths.dataset.answers);
+        var answers = JSON.parse(ths.dataset.answers);
         //console.log(answers);
 
         var defaultFB = "";
@@ -126,7 +126,7 @@ function isValid(el, charC) {
         if (el.value.indexOf('.') === -1) {
             return true;
         } else if (el.value.indexOf('/') != -1) {
-            parts = el.value.split('/');
+            var parts = el.value.split('/');
             if (parts[1].indexOf('.') === -1) {
                 return true;
             }
@@ -145,7 +145,7 @@ function isValid(el, charC) {
             return false;
         }
     } else if (charC == 45) {
-        edex = el.value.indexOf('e');
+        var edex = el.value.indexOf('e');
         if (edex == -1) {
             edex = el.value.indexOf('E');
         }

@@ -2,6 +2,7 @@ from IPython.core.display import display, Javascript, HTML
 import string
 import random
 import pkg_resources
+import urllib.request
 import urllib
 import json
 
@@ -61,7 +62,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     styles += css.decode("utf-8")
     styles += "</style>"
 
-    script = '<script type="text/Javascript">'
+    script = ''
 
 
     if isinstance(ref, list):
@@ -128,7 +129,6 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
         {{
         show_questions(questions{div_id},  {div_id});
         }}
-        </script>
         """
         javascript = script 
 
@@ -151,12 +151,12 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
         show_questions(questions{div_id}, {div_id});
         }});
         }}
-        </script>
         '''
         javascript = script 
 
     # print(javascript)
-    display(HTML(mydiv + styles + javascript))
+    display(HTML(mydiv + styles))
+    display(Javascript(javascript))
     #return div_id
 
 
@@ -182,7 +182,6 @@ def capture_responses(prev_div_id):
 
     mydiv = f"""<div id="{div_id}" ></div> """
     javascript= f"""
-    <script type="text/Javascript">
         {{
     mydiv={div_id}
     nB_cell = mydiv.closest(".jp-Notebook-cell");
@@ -205,12 +204,11 @@ def capture_responses(prev_div_id):
       mydiv.innerText = 'No Responses Found';
     }}
        }}
-    </script>
     """
     #print(mydiv)
     #print(javascript)
-    display(HTML(mydiv + javascript))
-    #display(Javascript(javascript))
+    display(HTML(mydiv))
+    display(Javascript(javascript))
 
 
     """
