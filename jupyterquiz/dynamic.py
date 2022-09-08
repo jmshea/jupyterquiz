@@ -131,9 +131,6 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
         }}
         """
         javascript = script 
-
-
-        print()
     else:
         script += f'''
         //console.log(element);
