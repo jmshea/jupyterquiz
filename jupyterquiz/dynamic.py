@@ -74,7 +74,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     elif isinstance(ref, str):
         if ref[0] == '#':
             script+=f'''var element=document.getElementById("{ref[1:]}");
-            var questions;
+            var questions{div_id};
             try {{
                questions{div_id}=JSON.parse(window.atob(element.innerHTML));
             }} catch(err) {{
