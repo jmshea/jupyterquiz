@@ -5,6 +5,7 @@ import pkg_resources
 import urllib.request
 import urllib
 import json
+import sys
 
 
 def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=True, preserve_responses=False):
@@ -87,9 +88,14 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
         elif not ref.lower().find("http"):
             script += f"var questions{div_id}="
             url = ref
-            file = urllib.request.urlopen(url)
-            for line in file:
-                script += line.decode("utf-8")
+            if sys.platform == 'emscripten':
+                from pyodide import open_url
+                text = open_url(url).read()
+                script+=text
+            else:
+                file = urllib.request.urlopen(url)
+                for line in file:
+                    script += line.decode("utf-8")
             static = False
         else:
             #print("File detected")
