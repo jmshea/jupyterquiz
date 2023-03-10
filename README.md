@@ -172,9 +172,9 @@ import pkg_resources # I don't understand exactly why this has to be done separa
 from jupyterquiz import display_quiz
 git_url='https://raw.githubusercontent.com/jmshea/Foundations-of-Data-Science-with-Python/main/questions/'
 
-import jupyterquiz
 
-#Uncomment this line if you have any problems and make sure you are getting 2.1.0
+#Uncomment the 2 lines below if you have any problems to make sure you are getting 2.1.0
+#import jupyterquiz
 #print(f'Version = {jupyterquiz.__version__}')
 
 display_quiz(git_url+'ch1.json')
