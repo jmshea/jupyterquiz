@@ -1,12 +1,19 @@
 [build-system]
-requires = ["flit_core >=2,<4", "setuptools"]
+requires = ["flit_core >=2,<4"]
 build-backend = "flit_core.buildapi"
 
-[tool.flit.metadata]
-module = "jupyterquiz"
-author = "John M. Shea"
-author-email = "jshea@ieee.org"
-home-page = "https://github.com/jmshea/jupyterquiz"
+[project]
+name = "JupyterQuiz"
+authors = [
+    {name = "John M. Shea", email = "jshea@ieee.org"}]
 classifiers = [ "License :: OSI Approved :: MIT License",]
-description-file = "README.md"
+description = "Interactive quizzes for Jupyter and Jupyter Book"
+readme  = "README.md"
+dependencies = ["setuptools"]
+dynamic = ["version"]
 
+[tool.flit.module]
+name = "jupyterquiz"
+
+[project.urls]
+home-page = "https://github.com/jmshea/jupyterquiz"
