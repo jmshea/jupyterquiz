@@ -9,7 +9,6 @@ authors = [
 classifiers = [ "License :: OSI Approved :: MIT License",]
 description = "Interactive quizzes for Jupyter and Jupyter Book"
 readme  = "README.md"
-dependencies = ["setuptools"]
 dynamic = ["version"]
 
 [tool.flit.module]
