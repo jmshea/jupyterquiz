@@ -1,7 +1,6 @@
 from IPython.core.display import display, Javascript, HTML
 import string
 import random
-#import pkg_resources
 import importlib.resources
 import urllib.request
 import urllib
@@ -61,7 +60,6 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     #print(mydiv)
 
     styles = "<style>"
-    #css = pkg_resources.resource_string(resource_package, "styles.css")
     f = importlib.resources.files(package).joinpath('styles.css')
     css = f.read_bytes()
     styles += css.decode("utf-8")
@@ -120,24 +118,18 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     # return
 
     # print(__name__)
-    #helpers = pkg_resources.resource_string(resource_package, "helpers.js")
     f = importlib.resources.files(package).joinpath('helpers.js')
     helpers=f.read_bytes()
     script += helpers.decode('utf-8')
 
-    # multiple_choice = pkg_resources.resource_string(
-    #     resource_package, "multiple_choice.js")
     f = importlib.resources.files(package).joinpath('multiple_choice.js')
     multiple_choice = f.read_bytes()
     script += multiple_choice.decode("utf-8")
 
-    #numeric = pkg_resources.resource_string(resource_package, "numeric.js")
     f = importlib.resources.files(package).joinpath('numeric.js')
     numeric = f.read_bytes()
     script += numeric.decode("utf-8")
 
-    # show_questions = pkg_resources.resource_string(
-    #     resource_package, "show_questions.js")
     f = importlib.resources.files(package).joinpath('show_questions.js')
     show_questions = f.read_bytes()
     script += show_questions.decode("utf-8")
