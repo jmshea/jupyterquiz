@@ -161,21 +161,15 @@ Numerical questions consist of a Question, an optional Precision, and one or mor
 
 ## Working with JupyterLite
 
-This should work with JupyterLite as of version 2.1.0. However, you ened to separately `import pkg_resources` -- I don't know why this doesn't import properly within the JupyterQuiz library. I will try to get to the bottom of it. Here is an example that should work on JupyterLite:
+This should work with JupyterLite as of version 2.1.2. Here is an example that should work on JupyterLite:
 
 
 ```
+import micropip
 await micropip.install('jupyterquiz')
-
-import pkg_resources # I don't understand exactly why this has to be done separately
 
 from jupyterquiz import display_quiz
 git_url='https://raw.githubusercontent.com/jmshea/Foundations-of-Data-Science-with-Python/main/questions/'
-
-
-#Uncomment the 2 lines below if you have any problems to make sure you are getting 2.1.0
-#import jupyterquiz
-#print(f'Version = {jupyterquiz.__version__}')
 
 display_quiz(git_url+'ch1.json')
 ```
