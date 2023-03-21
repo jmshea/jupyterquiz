@@ -147,7 +147,7 @@ function show_questions(json, mydiv) {
         iDiv.setAttribute('data-responses', '[]');
 
         // Dummy Text
-        iDiv.innerHTML="<b>Select your answers and then follow the directions that will appear here.</b>"
+        // iDiv.innerHTML="<b>Select your answers and then follow the directions that will appear here.</b>"
         //iDiv.className = 'Quiz';
         mydiv.appendChild(iDiv);
     }
