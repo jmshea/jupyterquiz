@@ -113,10 +113,11 @@ function show_questions(json, mydiv) {
         //console.log(qa.type);
 
         var num_correct;
-        if (qa.type == "multiple_choice") {
+        if ((qa.type == "multiple_choice") || (qa.type == "many_choice") ) {
             num_correct = make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id);
-        } else if (qa.type == "many_choice") {
-            num_correct = make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id);
+            if ("answer_cols" in qa) {
+                aDiv.style.gridTemplateColumns = 'auto '.repeat(qa.answer_cols);
+            }
         } else if (qa.type == "numeric") {
             //console.log("numeric");
             make_numeric(qa, outerqDiv, qDiv, aDiv, id);
