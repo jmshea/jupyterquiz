@@ -3,16 +3,21 @@
     "$id": "https://github.com/jmshea/jupyterquiz/mc_schema.json",
     "title": "JupyterQuiz Multiple or Many Choice Quiz",
     "description": "Schema for Multiple or Many Choice Questions in JupyterQuiz",
-    "definitions": {
-        "answerlist": {
+    "type": "object",
+    "properties": {
+        "question": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string",
+            "pattern": "multiple_choice|many_choice"
+        },
+        "answers": {
             "type": "array",
             "items": {
                 "type": "object",
                 "properties": {
-                    "answer (+)": {
-                        "type": "string"
-                    },
-                    "code (+)": {
+                    "answer": {
                         "type": "string"
                     },
                     "correct": {
@@ -20,33 +25,24 @@
                     },
                     "feedback": {
                         "type": "string"
+                    },
+                    "answer_cols": {
+                        "type": "number"
                     }
                 },
                 "required": [
+                    "answer",
                     "correct"
                 ]
             }
-        }
-    },
-    "type": "object",
-    "properties": {
-        "type": {
-            "type": "string",
-            "pattern": "multiple_choice|many_choice"
-        },
-        "question": {
-            "type": "string"
         },
         "code": {
             "type": "string"
-        },
-        "answers": {
-            "$ref": "#/definitions/answerlist"
         }
     },
     "required": [
-        "question",
         "type",
+        "question",
         "answers"
     ]
 }
