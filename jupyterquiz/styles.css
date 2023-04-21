@@ -18,6 +18,7 @@
     padding-top: 4px;
     line-height: 1.1;
     font-size: 16pt;
+    border-radius: inherit;
 }
 
 .QuizCode {
@@ -34,8 +35,9 @@
 .Answer {
     margin: 10px 0;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
+    border-radius: inherit;
 }
 
 .Feedback {
@@ -76,7 +78,7 @@
 .MCButton {
     background: #fafafa;
     border: 1px solid #eee;
-    border-radius: 10px;
+    border-radius: inherit;
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
@@ -91,21 +93,21 @@
     padding: 10px;
     background: var(--medium-slate-blue);
     color: #fafafa;
-    border-radius: 10px;
+    border-radius: inherit;
 }
 
 .ManyChoiceQn {
     padding: 10px;
     background: var(--orange-pantone);
     color: #fafafa;
-    border-radius: 10px;
+    border-radius: inherit;
 }
 
 .NumericQn {
     padding: 10px;
     background: var(--russian-violet);
     color: #fafafa;
-    border-radius: 10px;
+    border-radius: inherit;
 }
 
 .NumericQn p {

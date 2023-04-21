@@ -8,7 +8,8 @@ import json
 import sys
 
 
-def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=True, preserve_responses=False):
+def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=True, preserve_responses=False,
+                 border_radius=10):
     '''
     Display an interactive quiz (currently multiple-choice or numeric answer)
     using a mix of Python and Javascript to support use in rendered notebooks
@@ -29,6 +30,8 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     shuffle_answers = boolean, whether to shuffle answers for multiple-choice questions (default True)
     
     preserve_responses = boolean, whether to output the user responses in a way that is preserved upon reload of the notebook (default False)
+
+    border_radius = border radius property for all buttons and questions, in pixels (default 10)
 
     John  M. Shea
     9/26/2021
@@ -56,7 +59,8 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     mydiv = f"""<div id="{div_id}" data-shufflequestions="{str(shuffle_questions)}"
                data-shuffleanswers="{str(shuffle_answers)}"
                data-preserveresponses="{preserve_json}"
-               data-numquestions="{str(num)}"> """
+               data-numquestions="{str(num)}"
+               style="border-radius: {str(border_radius)}px;"> """
     #print(mydiv)
 
     styles = "<style>"

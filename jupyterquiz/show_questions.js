@@ -116,7 +116,8 @@ function show_questions(json, mydiv) {
         if ((qa.type == "multiple_choice") || (qa.type == "many_choice") ) {
             num_correct = make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id);
             if ("answer_cols" in qa) {
-                aDiv.style.gridTemplateColumns = 'auto '.repeat(qa.answer_cols);
+                //aDiv.style.gridTemplateColumns = 'auto '.repeat(qa.answer_cols);
+                aDiv.style.gridTemplateColumns = 'repeat(' + qa.answer_cols + ', 1fr)';
             }
         } else if (qa.type == "numeric") {
             //console.log("numeric");
