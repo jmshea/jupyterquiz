@@ -83,6 +83,9 @@
     font-size: 16px;
     cursor: pointer;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .MCButton p {
