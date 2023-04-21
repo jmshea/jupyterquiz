@@ -9,7 +9,7 @@ import sys
 
 
 def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=True, preserve_responses=False,
-                 border_radius=10):
+                 border_radius=10, question_alignment="left", max_width=600):
     '''
     Display an interactive quiz (currently multiple-choice or numeric answer)
     using a mix of Python and Javascript to support use in rendered notebooks
@@ -33,6 +33,10 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
 
     border_radius = border radius property for all buttons and questions, in pixels (default 10)
 
+    question_alignment = string, alignment of question text (default "left")
+
+    max_width= number, display width of question in pixels
+
     John  M. Shea
     9/26/2021
     '''
@@ -41,6 +45,9 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
         "This package does not support preserving responses if questions are shuffled."
     assert num==1_000_000 or (not preserve_responses), \
         "This package does not support preserving responses when num is set because num changes the order of questions"
+    assert question_alignment in ['left', 'right', 'center'], \
+        "question_alignment must be 'left', 'center', or 'right'"
+
 
     resource_package = __name__
     package = resource_package.split('.')[0]
@@ -60,7 +67,8 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
                data-shuffleanswers="{str(shuffle_answers)}"
                data-preserveresponses="{preserve_json}"
                data-numquestions="{str(num)}"
-               style="border-radius: {str(border_radius)}px;"> """
+               data-maxwidth="{str(max_width)}"
+               style="border-radius: {str(border_radius)}px; text-align: {question_alignment}"> """
     #print(mydiv)
 
     styles = "<style>"

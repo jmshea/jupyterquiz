@@ -43,6 +43,7 @@ function show_questions(json, mydiv) {
     var shuffle_questions = mydiv.dataset.shufflequestions;
     var num_questions = mydiv.dataset.numquestions;
     var shuffle_answers = mydiv.dataset.shuffleanswers;
+    var max_width = mydiv.dataset.maxwidth;
 
     if (num_questions > json.length) {
         num_questions = json.length;
@@ -72,9 +73,9 @@ function show_questions(json, mydiv) {
         iDiv.id = 'quizWrap' + id;
         iDiv.className = 'Quiz';
         iDiv.setAttribute('data-qnum', index);
+        iDiv.style.maxWidth  =max_width+"px";
         mydiv.appendChild(iDiv);
         // iDiv.innerHTML=qa.question;
-
         var outerqDiv = document.createElement('div');
         outerqDiv.id = "OuterquizQn" + id + index;
 
