@@ -76,18 +76,20 @@ function show_questions(json, mydiv) {
         iDiv.style.maxWidth  =max_width+"px";
         mydiv.appendChild(iDiv);
         // iDiv.innerHTML=qa.question;
+        
         var outerqDiv = document.createElement('div');
         outerqDiv.id = "OuterquizQn" + id + index;
-
-        iDiv.append(outerqDiv);
-
         // Create div to contain question part
         var qDiv = document.createElement('div');
         qDiv.id = "quizQn" + id + index;
-        //qDiv.textContent=qa.question;
-        qDiv.innerHTML = jaxify(qa.question);
+        
+        if (qa.question) {
+            iDiv.append(outerqDiv);
 
-        outerqDiv.append(qDiv);
+            //qDiv.textContent=qa.question;
+            qDiv.innerHTML = jaxify(qa.question);
+            outerqDiv.append(qDiv);
+        }
 
         // Create div for code inside question
         var codeDiv;
