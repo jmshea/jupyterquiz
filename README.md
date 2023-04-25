@@ -50,6 +50,15 @@ JupyterQuiz supports a few options:
 * shuffle_answers = boolean, whether to shuffle answers for multiple-choice questions (default True)
 * preserve_responses = boolean, whether to output the user responses in a way that is preserved upon reload of the notebook (default False) -- see below
 
+### Quiz Formatting
+In addtion, it supports additional options for controlling the formatting of the quiz options.
+
+* `border_radius` = boolean, border radius of question boxes
+* `question_alignment` = string, alignment of question text (e.g., "left", "right)
+* `max_width` = int, max width of question boxes
+
+For more fine-grained formatting control of the question text, leaving the question field the empty string (`""`) will result in only the answers being displayed. This allows for custom question formatting such as including images, tables, more complex code examples, etc. Note that this feature works better for a single question quiz and may not work as well with shuffled quizzes or quiz questions selected at random.
+
 ## Preserving student responses
 
 **New as of version 2.0 (7/26/2022): There is now code to enable preserving student responses (for instance, for checking/grading their quizzes). If you want to use this functionality, please read this carefully!**
