@@ -57,7 +57,33 @@ In addtion, it supports additional options for controlling the formatting of the
 * `question_alignment` = string, alignment of question text (e.g., "left", "right)
 * `max_width` = int, max width of question boxes
 
-For more fine-grained formatting control of the question text, leaving the question field the empty string (`""`) will result in only the answers being displayed. This allows for custom question formatting such as including images, tables, more complex code examples, etc. Note that this feature works better for a single question quiz and may not work as well with shuffled quizzes or quiz questions selected at random.
+For more fine-grained formatting control of the question text, leaving the
+question field the empty string (`""`) will result in only the answers being
+displayed. This allows for custom question formatting such as including images,
+tables, more complex code examples, etc. Note that this feature works better for
+a single question quiz and may not work as well with shuffled quizzes or quiz
+questions selected at random.
+
+Colors can be changed by passing the `colors` keyword argument. Pass in a dictionary of colors that you would like to change. Here is the default dictionary for reference:
+
+```{Python}
+color_dict = {
+        '--jq-multiple-choice-bg': '#6f78ffff',   # Background for the question part of multiple-choice questions
+        '--jq-mc-button-bg': '#fafafa',           # Background for the buttons when not pressed
+        '--jq-mc-button-border': '#e0e0e0e0',     # Border of the buttons
+        '--jq-mc-button-inset-shadow': '#555555', # Color of inset shadow for pressed buttons
+        '--jq-many-choice-bg': '#f75c03ff',       # Background for question part of many-choice questions
+        '--jq-numeric-bg': '#392061ff',           # Background for question part of numeric questions
+        '--jq-numeric-input-bg': '#c0c0c0',       # Background for input area of numeric questions
+        '--jq-numeric-input-label': '#101010',    # Color for input of numeric questions
+        '--jq-numeric-input-shadow': '#999999',   # Color for shadow of input area of numeric questions when selected
+        '--jq-incorrect-color': '#c80202',        # Color for incorrect answers 
+        '--jq-correct-color': '#009113',          # Color for correct answers
+        '--jq-text-color': '#fafafa'              # Color for question text
+    }
+```
+
+There is one included alternative set of colors to the default colors, which be selected by passing `colors='fdsp'`.
 
 ## Preserving student responses
 
