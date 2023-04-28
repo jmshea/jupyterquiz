@@ -8,8 +8,10 @@ import json
 import sys
 
 
+
 def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=True, preserve_responses=False,
-                 border_radius=10, question_alignment="left", max_width=600):
+                 border_radius=10, question_alignment="left", max_width=600,
+                 colors = None ):
     '''
     Display an interactive quiz (currently multiple-choice or numeric answer)
     using a mix of Python and Javascript to support use in rendered notebooks
@@ -28,7 +30,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     shuffle_questions = boolean, whether to shuffle order of questions (default False)
 
     shuffle_answers = boolean, whether to shuffle answers for multiple-choice questions (default True)
-    
+
     preserve_responses = boolean, whether to output the user responses in a way that is preserved upon reload of the notebook (default False)
 
     border_radius = border radius property for all buttons and questions, in pixels (default 10)
@@ -36,6 +38,9 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     question_alignment = string, alignment of question text (default "left")
 
     max_width= number, display width of question in pixels
+
+    colors = None or dict of CSS color names, also takes string 'fdsp' to switch to colors for
+             Foundations of Data Science with Python book
 
     John  M. Shea
     9/26/2021
@@ -61,7 +66,47 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     else:
         preserve_json = "false"
 
+    # These are the default colors, but I am working on adding an override
+    # via a argument to display_quiz()
+    color_dict = {
+        '--jq-multiple-choice-bg': '#6f78ffff',
+        '--jq-mc-button-bg': '#fafafa',
+        '--jq-mc-button-border': '#e0e0e0e0',
+        '--jq-mc-button-inset-shadow': '#555555',
+        '--jq-many-choice-bg': '#f75c03ff',
+        '--jq-numeric-bg': '#392061ff',
+        '--jq-numeric-input-bg': '#c0c0c0',
+        '--jq-numeric-input-label': '#101010',
+        '--jq-numeric-input-shadow': '#999999',
+        '--jq-incorrect-color': '#c80202',
+    '--jq-correct-color': '#009113',
+        '--jq-text-color': '#fafafa'
+    }
+    
+    # Colors for Foundations of Data Science with Python
+    #axes.prop_cycle: cycler('color', [ '345995', 'e26d5a', '87a878', '5bc0eb', '861657'])
+    fdsp_dict = {
+        '--jq-multiple-choice-bg': '#345995',
+        '--jq-mc-button-bg': '#fafafa',
+        '--jq-mc-button-border': '#e0e0e0e0',
+        '--jq-mc-button-inset-shadow': '#555555',
+        '--jq-many-choice-bg': '#e26d5a',
+        '--Jq-numeric-bg': '#5bc0eb', #'#861657',
+        '--jq-numeric-input-bg': '#c0c0c0',
+        '--jq-numeric-input-label': '#101010',
+        '--jq-numeric-input-shadow': '#999999',
+        '--jq-incorrect-color': '#666666',
+        '--jq-correct-color': '#87a878',
+        '--jq-text-color': '#fafafa'
+    }
 
+
+    # Switch colors if got a dict or 'fdsp' for colors, accordingly
+    if colors == 'fdsp':
+        color_dict = fdsp_dict
+    elif type(colors) == dict:
+        color_dict.update(colors)
+        #print(color_dict)
 
     mydiv = f"""<div id="{div_id}" data-shufflequestions="{str(shuffle_questions)}"
                data-shuffleanswers="{str(shuffle_answers)}"
@@ -71,11 +116,18 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
                style="border-radius: {str(border_radius)}px; text-align: {question_alignment}"> """
     #print(mydiv)
 
-    styles = "<style>"
+    styles = "<style>\n"
+    # Now add in the color definitions
+    styles += f'#{div_id}' + ' {\n'
+    for var,color in color_dict.items():
+        styles+=(f'   {var}: {color};\n')
+    styles+= "}\n\n"
+    #print(styles)
     f = importlib.resources.files(package).joinpath('styles.css')
     css = f.read_bytes()
     styles += css.decode("utf-8")
     styles += "</style>"
+
 
     script = ''
 
