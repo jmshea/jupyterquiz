@@ -155,7 +155,14 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
             script += f"var questions{div_id}="
             url = ref
             if sys.platform == 'emscripten':
-                from pyodide import open_url
+                try: 
+                    from pyodide.http import open_url
+                except:
+                    try:
+                        from pyodide import open_url
+                    except:
+                        print('Importing open_url failed. Please raise an issue at https://github.com/jmshea/jupyterquiz/issues')
+
                 text = open_url(url).read()
                 script+=text
             else:
