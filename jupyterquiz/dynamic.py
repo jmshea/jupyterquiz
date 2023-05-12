@@ -198,12 +198,34 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     show_questions = f.read_bytes()
     script += show_questions.decode("utf-8")
 
+    script += f'''/* This is to handle asynchrony issues in loading Jupyter notebooks
+           where the quiz has been previously run. The Javascript was generally
+           being run before the div was added to the DOM. I tried to do this
+           more elegantly using Mutation Observer, but I didn't get it to work.
+
+           Someone more knowledgeable could make this better ;-) */
+
+        function try_show() {{
+          if(document.getElementById("{div_id}")) {{
+            show_questions(questions{div_id},  {div_id}); 
+          }} else {{
+             setTimeout(try_show, 200);
+          }}
+        }};
+    '''
+
     if static:
         script += f"""
         {{
-        show_questions(questions{div_id},  {div_id});
+        // console.log(element);
+
+        //console.log("{div_id}");
+        // console.log(document.getElementById("{div_id}"));
+
+        try_show();
         }}
         """
+        #print(script)
         javascript = script 
     else:
         script += f'''
