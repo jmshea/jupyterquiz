@@ -21,9 +21,10 @@ These animated GIFs illustrate the two basic question types in *JupyterQuiz*:
 
 ---
 
-For more examples with various types of functionality, check out the Review section of Chapter 3 of the *Foundations of Data Science with Python* Jupyter Book: 
+**Examples using JupyterQuiz**
 
-[Example of JupyterQuiz in Action](https://jmshea.github.io/Foundations-of-Data-Science-with-Python/03-first-data/review.html)
+* [Chapter 3 Review, *Foundations of Data Science with Python* Jupyter Book](https://jmshea.github.io/Foundations-of-Data-Science-with-Python/03-first-data/review.html)
+* [Section 2.2 Introduction to Data Structures, *Introduction to Python for Humanists*](https://python-textbook.pythonhumanities.com/01_intro/01_02-03_data_structures.html)
 
 The notebook [test.ipynb](test.ipynb) shows more features but must be run on your own local Jupyter or in nbviewer -- GitHub only renders the static HTML that does not include the interactive quizzes. (If viewing on GitHub, there should be a little circle with a minus sign at the top of the file that offers you the ability to launch the notebook in nbviewer.)
 
