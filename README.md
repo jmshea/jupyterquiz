@@ -23,9 +23,12 @@ These animated GIFs illustrate the two basic question types in *JupyterQuiz*:
 
 **Examples using JupyterQuiz**
 
-* [Chapter 3 Review, *Foundations of Data Science with Python* Jupyter Book](https://jmshea.github.io/Foundations-of-Data-Science-with-Python/03-first-data/review.html)
-* [Section 2.2 Introduction to Data Structures, *Introduction to Python for Humanists*](https://python-textbook.pythonhumanities.com/01_intro/01_02-03_data_structures.html)
-* [Lecture 1: Course Introduction/Water Cycle of *Groundwater I*](https://vibhubatheja.github.io/GW-Book/content/background/03_basic_hydrogeology.html)
+* *Foundations of Data Science with Python* book by John M. Shea. Example: [Chapter 3 Review, ](https://jmshea.github.io/Foundations-of-Data-Science-with-Python/03-first-data/review.html)
+* *Introduction to Python for Humanists* book by W.J.B. Mattingly. Example: [Section 2.2 Introduction to Data Structures, ](https://python-textbook.pythonhumanities.com/01_intro/01_02-03_data_structures.html)
+* *Groundwater I* by  P. K. Yadav, T. Reimann, and others. Example: [Lecture 1: Course Introduction/Water Cycle of ](https://vibhubatheja.github.io/GW-Book/content/background/03_basic_hydrogeology.html)
+* *Sizing and optimization of mechatronic systems* course by Marc Budinger, Scott Delbecq and Félix Pollet. Example: [Lecture 1 Quiz](https://sizinglab.github.io/sizing_course/class/Lecture1/4-quizz.html)
+
+If you using JupyterQuiz in a Jupyter Book or other way that is useable on the web, please clone this repository, add your information to the bulleted list in the README.md, and make a pull request for me to include a link to your use of this library.
 
 The notebook [test.ipynb](test.ipynb) shows more features but must be run on your own local Jupyter or in nbviewer -- GitHub only renders the static HTML that does not include the interactive quizzes. (If viewing on GitHub, there should be a little circle with a minus sign at the top of the file that offers you the ability to launch the notebook in nbviewer.)
 
