@@ -91,7 +91,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
         '--jq-mc-button-border': '#e0e0e0e0',
         '--jq-mc-button-inset-shadow': '#555555',
         '--jq-many-choice-bg': '#e26d5a',
-        '--Jq-numeric-bg': '#5bc0eb', #'#861657',
+        '--jq-numeric-bg': '#5bc0eb', #'#861657',
         '--jq-numeric-input-bg': '#c0c0c0',
         '--jq-numeric-input-label': '#101010',
         '--jq-numeric-input-shadow': '#999999',
