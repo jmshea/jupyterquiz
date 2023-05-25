@@ -21,9 +21,17 @@ These animated GIFs illustrate the two basic question types in *JupyterQuiz*:
 
 ---
 
-For more examples with various types of functionality, check out the Review section of Chapter 3 of the *Foundations of Data Science with Python* Jupyter Book: 
+**Examples using JupyterQuiz**
 
-[Example of JupyterQuiz in Action](https://jmshea.github.io/Foundations-of-Data-Science-with-Python/03-first-data/review.html)
+* *Foundations of Data Science with Python* book by John M. Shea. Example: [Chapter 3 Review, ](https://jmshea.github.io/Foundations-of-Data-Science-with-Python/03-first-data/review.html)
+* *Introduction to Python for Humanists* book by W.J.B. Mattingly. Example: [Section 2.2 Introduction to Data Structures, ](https://python-textbook.pythonhumanities.com/01_intro/01_02-03_data_structures.html)
+* *Groundwater I* by  P. K. Yadav, T. Reimann, and others. Example: [Lecture 1: Course Introduction/Water Cycle of ](https://vibhubatheja.github.io/GW-Book/content/background/03_basic_hydrogeology.html)
+* *Sizing and optimization of mechatronic systems* course by Marc Budinger, Scott Delbecq and Félix Pollet. Example: [Lecture 1 Quiz](https://sizinglab.github.io/sizing_course/class/Lecture1/4-quizz.html)
+* *Linux en Bioinformatique* by Thomas Denecker & Claire Toffano-Nioche. Example: [Quizz 1](https://ifb-elixirfr.github.io/LinuxEBAII/quizz_01.html) 
+* *Programmering i Kjemi (Programming in Chemistry?)* by Andreas Haraldsrud. Example: [Quiz 1: Variabler og aritmetikk](https://andreasdh.github.io/programmering-i-kjemi/docs/grunnleggende_programmering/quiz1.html)
+* *AnIML: Another Introduction to Machine Learning* by Hunter Schafer. Example: [Chapter 2: Assessing Performance](https://animlbook.com/regression/assessing_performance/index.html)
+
+If you using JupyterQuiz in a Jupyter Book or other way that is useable on the web, please clone this repository, add your information to the bulleted list in the README.md, and make a pull request for me to include a link to your use of this library.
 
 The notebook [test.ipynb](test.ipynb) shows more features but must be run on your own local Jupyter or in nbviewer -- GitHub only renders the static HTML that does not include the interactive quizzes. (If viewing on GitHub, there should be a little circle with a minus sign at the top of the file that offers you the ability to launch the notebook in nbviewer.)
 
