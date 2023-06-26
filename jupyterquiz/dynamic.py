@@ -1,4 +1,4 @@
-from IPython.core.display import display, Javascript, HTML
+from IPython.display import display, Javascript, HTML
 import string
 import random
 import importlib.resources
