@@ -1,0 +1,4 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+jupyter>=1.0.0=py311hca03da5_8
+python>=3.11.5=hb885b13_0
