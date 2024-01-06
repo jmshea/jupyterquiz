@@ -2,7 +2,7 @@
 *JupyterQuiz* is a tool for displaying **interactive self-assessment quizes in Jupyter notebooks and Jupyter Book**. 
 
 *JupyterQuiz* is part of my effort to make **open source tools for developing modern, interactive textbooks**.
-* The other part of this effort is my interactive self-assessment quiz tool, 
+* The other part of this effort is my interactive flashcards tool, 
 [JupyterCards](https://github.com/jmshea/jupytercards).  
 * You can see both tools in action in my 
 (in-progress) textbook [Foundations of Data Science with Python](https://jmshea.github.io/Foundations-of-Data-Science-with-Python/).
