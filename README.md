@@ -25,7 +25,9 @@ These animated GIFs illustrate the two basic question types in *JupyterQuiz*:
 
 **Examples using JupyterQuiz**
 
-* *Foundations of Data Science with Python* book by John M. Shea. Example: [Chapter 3 Review, ](https://jmshea.github.io/Foundations-of-Data-Science-with-Python/03-first-data/review.html)
+This library was built to create interactive questions for the  [*Foundations of Data Science with Python*](https://www.amazon.com/Foundations-Data-Science-Python-Chapman/dp/1032350423) book by John M. Shea. Example: [Chapter 3 Self-Assessment Questions](https://www.fdsp.net/03-first-data/summary.html#terminology-review)
+
+Some other examples I have seen around the web include:
 * *Introduction to Python for Humanists* book by W.J.B. Mattingly. Example: [Section 2.2 Introduction to Data Structures, ](https://python-textbook.pythonhumanities.com/01_intro/01_02-03_data_structures.html)
 * *Groundwater I* by  P. K. Yadav, T. Reimann, and others. Example: [Lecture 1: Course Introduction/Water Cycle of ](https://vibhubatheja.github.io/GW-Book/content/background/03_basic_hydrogeology.html)
 * *Sizing and optimization of mechatronic systems* course by Marc Budinger, Scott Delbecq and Félix Pollet. Example: [Lecture 1 Quiz](https://sizinglab.github.io/sizing_course/class/Lecture1/4-quizz.html)
