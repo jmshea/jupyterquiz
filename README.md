@@ -1,7 +1,7 @@
 # JupyterQuiz
 *JupyterQuiz* is a tool for displaying **interactive self-assessment quizes in Jupyter notebooks and Jupyter Book**. 
 
-**Important Note for JupyterLab 4 Users:** Changes to the math rendering system in JupyterLab 4 have broken the LaTeX rendering in JupyterQuiz. There is not currently a simple solution, but I have opened an issue requesting that the necessary methods be made available. Math should still work in Jupyter Book. A very hacky solution is available in version 2.7.0a2, which loads MathJax 3 on top of the JupyterLab MathJax version. Use at your own risk! (It can be installed as `pip install jupyterquiz==2.7.0a2`.)
+**Important Note for JupyterLab 4 Users:** Changes to the math rendering system in JupyterLab 4 have broken the LaTeX rendering in JupyterQuiz. There is not currently a simple solution, but I have opened an issue requesting that the necessary methods be made available. Math should still work in Jupyter Book. A very hacky solution is available in version 2.7.0a3, which loads MathJax 3 on top of the JupyterLab MathJax version. Use at your own risk! (It can be installed as `pip install jupyterquiz==2.7.0a3`. Note that 2.7.0a3 also changes how the precision parameter effects numerical answers. Prior to 2.7.0a3, precision specified a decimal place; from 2.7.0a3 on, it specifies a number of significant digits. )
 
 *JupyterQuiz* is part of my effort to make **open source tools for developing modern, interactive textbooks**.
 * The other part of this effort is my interactive flashcards tool, 
