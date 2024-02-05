@@ -1,5 +1,5 @@
 # JupyterQuiz
-*JupyterQuiz* is a tool for displaying **interactive self-assessment quizes in Jupyter notebooks and Jupyter Book**. 
+*JupyterQuiz* is a tool for displaying **interactive self-assessment quizes in Jupyter notebooks and Jupyter Book**. JupyterQuiz was created to enable interactive quizzes for readers of my book [*Foundations of Data Science with Python*](https://t.co/ES9zBUMSQF) [Affiliate Link]
 
 **Important Note for JupyterLab 4 Users:** Changes to the math rendering system in JupyterLab 4 have broken the LaTeX rendering in JupyterQuiz. There is not currently a simple solution, but I have opened an issue requesting that the necessary methods be made available. Math should still work in Jupyter Book. A very hacky solution is available in version 2.7.0a3, which loads MathJax 3 on top of the JupyterLab MathJax version. Use at your own risk! (It can be installed as `pip install jupyterquiz==2.7.0a3`. Note that 2.7.0a3 also changes how the precision parameter effects numerical answers. Prior to 2.7.0a3, precision specified a decimal place; from 2.7.0a3 on, it specifies a number of significant digits. )
 
@@ -222,7 +222,6 @@ display_quiz(git_url+'ch1.json')
 ```
 
 
-<!-- If you find this useful... 
- <a href="https://www.buymeacoffee.com/jshea" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a> -->
- 
+**As an Amazon Associate I earn from qualifying purchases.**
+
 
