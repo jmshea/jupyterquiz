@@ -22,12 +22,30 @@
     padding: 4px;
 }
 
+.Quiz code {
+    background-color: lightgray;
+    color: black;
+}
+
+.Quiz .QuizCode code {
+    background-color: inherit;
+    color: inherit;
+}
+
+
+.Quiz .MCButton code {
+    background-color: inherit;
+    color: inherit;
+}
+
+
+
 .Answer {
-    margin: 10px 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
     border-radius: inherit;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    margin: 10px 0;
 }
 
 .Feedback {
@@ -60,7 +78,7 @@
 }
 
 .Input-text:focus {
-    outline: none;
+    /*outline: none;*/
     background-color: var(--jq-numeric-input-bg);
     box-shadow: 0.6rem 0.8rem 1.4rem -0.5rem var(--jq-numeric-input-shadow);
 }
@@ -98,10 +116,10 @@
 }
 
 .NumericQn {
-    padding: 10px;
     background: var(--jq-numeric-bg);
-    color: var(--jq-text-color);
     border-radius: inherit;
+    color: var(--jq-text-color);
+    padding: 10px;
 }
 
 .NumericQn p {
@@ -109,11 +127,11 @@
 }
 
 .InpLabel {
-    line-height: 34px;
-    float: left;
-    margin-right: 10px;
     color: var(--jq-numeric-input-label);
+    float: left;
     font-size: 15pt;
+    line-height: 34px;
+    margin-right: 10px;
 }
 
 .incorrect {
@@ -130,17 +148,17 @@
    */
     animation: correct-anim 0.6s ease;
     animation-fill-mode: forwards;
+    box-shadow: inset 0 0 5px var(--jq-mc-button-inset-shadow);
     color: var(--jq-text-color);
-    box-shadow: inset 0px 0px 5px var(--jq-mc-button-inset-shadow);
-    outline: none;
+    /*outline: none;*/
 }
 
 .incorrectButton {
     animation: incorrect-anim 0.8s ease;
     animation-fill-mode: forwards;
+    box-shadow: inset 0 0 5px var(--jq-mc-button-inset-shadow);
     color: var(--jq-text-color);
-    box-shadow: inset 0px 0px 5px var(--jq-mc-button-inset-shadow);
-    outline: none;
+    /*outline: none;*/
 }
 
 @keyframes incorrect-anim {
