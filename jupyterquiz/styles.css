@@ -38,6 +38,11 @@
     color: inherit;
 }
 
+.MCButton .QuizCode {
+    text-align: left;
+}
+
+
 
 
 .Answer {
