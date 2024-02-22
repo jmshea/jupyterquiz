@@ -9,6 +9,8 @@
 * You can see both tools in action in my 
 (in-progress) textbook [Foundations of Data Science with Python](https://jmshea.github.io/Foundations-of-Data-Science-with-Python/).
 
+If you would like to see a video that introduces these tools and discusses *why* I made them, check out my [JupyterCon 2023 talk on Tools for Interactive Education Experiences in Jupyter Notebooks and Jupyter Books](https://www.youtube.com/watch?v=MDMUiQ2_ZWE).
+
 These animated GIFs illustrate the two basic question types in *JupyterQuiz*:
 
 **Many Choice Question**
