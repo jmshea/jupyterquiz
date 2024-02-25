@@ -53,6 +53,13 @@
     margin: 10px 0;
 }
 
+@media only screen and (max-width:480px) {
+    .Answer {
+        grid-template-columns: 1fr;
+    }
+
+}
+
 .Feedback {
     font-size: 16pt;
     text-align: center;
