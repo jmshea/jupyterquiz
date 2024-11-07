@@ -140,7 +140,17 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
         url = ""
     elif isinstance(ref, str):
         if ref[0] == '#':
-            script+=f'''var element=document.getElementById("{ref[1:]}");
+            script+=f''' var element=document.getElementById("{ref[1:]}");
+            if (element == null) {{
+               console.log("If you see this mesg on 4.2.5 to 4.3.0, id's don't work -- change to class");
+               var questionTmp = document.getElementsByClassName("{ref[1:]}");
+               // console.log(questionTmp); 
+               element = (questionTmp[0]);
+               //console.log(element);
+            }}
+            if (element == null) {{
+               throw new Error("Could not find element with id or class {ref[1:]}");_
+            }}
             var questions{div_id};
             try {{
                questions{div_id}=JSON.parse(window.atob(element.innerHTML));
