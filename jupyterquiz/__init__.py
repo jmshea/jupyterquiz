@@ -5,11 +5,11 @@ page is reloaded Jupyter Book (HTML format).
 
 Currently supports two question types: Multiple/Many Choice and Numeric
 
-Created by John M. Shea, copyright 2021
-for the book Introduction to Data Science for Engineers
+Created by John M. Shea, copyright 2021-2024
+for the book Foundations of Data Science with Python: https://fdsp.net
 
 All files in the package are distributed under the MIT License
 '''
 
-__version__ = '2.7.0a9'
+__version__ = '2.8.0'
 from .dynamic import display_quiz, capture_responses
