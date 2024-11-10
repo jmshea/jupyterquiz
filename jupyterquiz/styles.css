@@ -3,8 +3,8 @@
     margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 15px;
-    padding-bottom: 4px;
+/*    margin-bottom: 15px;*/
+/*    padding-bottom: 4px;*/
     padding-top: 4px;
     line-height: 1.1;
     font-size: 16pt;
@@ -63,7 +63,7 @@
 .Feedback {
     font-size: 16pt;
     text-align: center;
-    min-height: 2em;
+/*    min-height: 2em;*/
 }
 
 .Input {

@@ -32,6 +32,10 @@ function jaxify(string) {
         //console.log(mystring,", loc:",loc,", loc2:",loc2);
     }
 
+    // repace markdown style links with actual links
+    mystring = mystring.replace(/<(.*?)>/, '<a href="$1" target="_blank" class="Link">$1</a>');
+    mystring = mystring.replace(/\[(.*?)\]\((.*?)\)/, '<a href="$2" target="_blank" class="Link">$1</a>');
+
     //console.log(mystring);
     return mystring;
 }
@@ -219,5 +223,14 @@ if (typeof version == 'undefined') {
             }
         }
     }
+
+    // stop event propagation for the .Link class
+    var links = document.getElementsByClassName('Link')
+    for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('click', function(e){
+            e.stopPropagation();
+        });
+    }
+
     return false;
 }
