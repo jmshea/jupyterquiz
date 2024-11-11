@@ -1,9 +1,33 @@
 # JupyterQuiz
 *JupyterQuiz* is a tool for displaying **interactive self-assessment quizzes in Jupyter notebooks and Jupyter Book**. JupyterQuiz was created to enable interactive quizzes for readers of my book [*Foundations of Data Science with Python*](https://t.co/ES9zBUMSQF) [Affiliate Link]
 
-**Important Note for JupyterLab 4 Users:** Changes to the math rendering system in JupyterLab 4 have broken the LaTeX rendering in JupyterQuiz. There is not currently a simple solution, but I have opened an issue requesting that the necessary methods be made available. Math should still work in Jupyter Book. A very hacky solution is available in version 2.7.0a4, which loads MathJax 3 on top of the JupyterLab MathJax version. Use at your own risk! (It can be installed as `pip install jupyterquiz==2.7.0a4`. Note that 2.7.0a3 also changed how the precision parameter effects numerical answers. Prior to 2.7.0a3, precision specified a decimal place; from 2.7.0a3 on, it specifies a number of significant digits. )
+**Important Note for JupyterLab 4 Users:**  *TLDR*: Make sure you are using at least 2.7.0a4. 
 
-*JupyterQuiz* is part of my effort to make **open source tools for developing modern, interactive textbooks**.
+There have been two significant changes to Jupyter Lab recently:
+
+1) Changes to the math rendering system in JupyterLab 4 have broken the LaTeX
+rendering in JupyterQuiz. There is not currently a simple solution, but I have
+opened an issue requesting that the necessary methods be made available. Math
+should still work in Jupyter Book. A very hacky solution for Jupyter Lab has now
+been moved to the main branch staring with 2.8.0. This loads MathJax 3 on top of
+the JupyterLab MathJax version. Although this is not the ideal solution, the upstream
+problem has not been fixed after many months, and so I felt I had to take this step.
+If it breaks anything for you, please let me know.
+
+2) Starting with Jupyter 4.2.5, when Markdown cells are rendered, the id tags
+will be stripped from any HTML elements. These id tags were needed by
+JupyterQuiz users who use hidden spans to embed quizzes in Jupyter notebooks.
+This probably affects a small number of JupyterQuiz users. If you are affected,
+update to JupyterQuiz 2.8.0 or later and change your `id` tags to `class`, and
+everything should work again.
+
+**Change to precision parameter:** Starting with 2.7.0a3 and 2.8.0, I changed
+how the precision parameter effects numerical answers. Prior to these versions,
+precision specified a decimal place; from these versions on, it specifies a number of
+significant digits. )
+
+*JupyterQuiz* is part of my effort to make **open source tools for developing
+modern, interactive textbooks**.
 * The other part of this effort is my interactive flashcards tool, 
 [JupyterCards](https://github.com/jmshea/jupytercards).  
 * You can see both tools in action in my 
