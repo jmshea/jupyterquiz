@@ -1,7 +1,7 @@
 # JupyterQuiz
 *JupyterQuiz* is a tool for displaying **interactive self-assessment quizzes in Jupyter notebooks and Jupyter Book**. JupyterQuiz was created to enable interactive quizzes for readers of my book [*Foundations of Data Science with Python*](https://t.co/ES9zBUMSQF) [Affiliate Link]
 
-**Important Note for JupyterLab 4 Users:**  *TLDR*: Make sure you are using at least 2.7.0a4. 
+**Important Note for JupyterLab 4 Users:**  *TLDR*: Make sure you are using Jupyter Quiz version 2.8.0 or later.
 
 There have been two significant changes to Jupyter Lab recently:
 
