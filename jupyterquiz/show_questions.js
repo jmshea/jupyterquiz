@@ -129,6 +129,9 @@ function show_questions(json, mydiv) {
         } else if (qa.type == "numeric") {
             //console.log("numeric");
             make_numeric(qa, outerqDiv, qDiv, aDiv, id);
+        } else if (qa.type == "string") {
+            //console.log("string");
+            make_string(qa, outerqDiv, qDiv, aDiv, id);
         }
 
 

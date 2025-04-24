@@ -211,6 +211,10 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     numeric = f.read_bytes()
     script += numeric.decode("utf-8")
 
+    f = importlib.resources.files(package).joinpath('string.js')
+    string_js = f.read_bytes()
+    script += string_js.decode("utf-8")
+
     f = importlib.resources.files(package).joinpath('show_questions.js')
     show_questions = f.read_bytes()
     script += show_questions.decode("utf-8")
