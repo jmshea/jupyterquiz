@@ -125,7 +125,7 @@
     {
         "question": "Enter the value of $\\pi$ to 2 decimal places.",
         "type": "numeric",
-        "precision": 2,
+        "precision": 3,
         "answers": [
             {
                 "type": "value",
