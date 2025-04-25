@@ -156,7 +156,7 @@ Multiple/Many Choice questions are defined by a Question, an optional Code block
 
 
 Example JSON for a many-choice question is below:
-```
+```json
   {
         "question": "Choose all of the following that can be included in Jupyter notebooks?",
         "type": "many_choice",
@@ -199,7 +199,7 @@ Numerical questions consist of a Question, an optional Precision, and one or mor
   \* = Required parameter
   
   Example JSON for a numerical question is below:
-```
+```json
   {
         "question": "Enter the value of pi (will be checked to 2 decimal places):",
         "type": "numeric",
@@ -239,7 +239,7 @@ String questions are specified by setting the "type" property to "string". These
 
 Example JSON for a string question is below:
 ```json
-example_string = [{
+{
     "question": "Who was the 35th president (1961-63) of the US?",
     "type": "string",
     "answers": [
@@ -262,7 +262,7 @@ example_string = [{
             "match_case": false
         }
     ]
-}]
+}
 ```
 
 ## Working with JupyterLite
