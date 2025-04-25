@@ -1,0 +1,50 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/jmshea/jupyterquiz/string_schema.json",
+    "title": "String Q",
+    "description": "Schema for String Questions in JupyterQuiz",
+    "type": "object",
+    "required": [
+        "question",
+        "type",
+        "answers"
+    ],
+    "properties": {
+        "question": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string"
+        },
+        "answers": {
+            "type": "array",
+	          "items": { "$ref": "#/$defs/possible_answer" }
+        }
+    },
+        "$defs": {
+        "possible_answer": {
+            "type": "object",
+            "properties": {
+                "answer": {
+                    "type": "string"
+                },
+                "correct": {
+                    "type": "boolean"
+                },
+                "feedback": {
+                    "type": "string"
+                },
+                "match_case": {
+                    "type": "boolean"
+                },
+                "fuzzy_threshold": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "answer",
+                "correct"
+            ]
+        }
+    }
+}
