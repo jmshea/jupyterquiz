@@ -39,7 +39,13 @@ function check_numeric(ths, event) {
             correct = false;
             // if (answer.type=="value"){
             if ('value' in answer) {
-                if (submission == answer.value) {
+                var value;
+                if ("precision" in ths.dataset) {
+                    value = answer.value.toPrecision(ths.dataset.precision);
+                } else {
+                    value = answer.value;
+                }
+                if (submission == value) {
                     if ("feedback" in answer) {
                         fb.innerHTML = jaxify(answer.feedback);
                     } else {
@@ -49,6 +55,7 @@ function check_numeric(ths, event) {
                     //console.log(answer.correct);
                     done = true;
                 }
+
                 // } else if (answer.type=="range") {
             } else if ('range' in answer) {
                 console.log(answer.range);
@@ -125,6 +132,17 @@ function check_numeric(ths, event) {
     }
 
 }
+// Object-oriented wrapper for numeric questions
+class NumericQuestion extends Question {
+    constructor(qa, id, idx, opts, rootDiv) {
+        super(qa, id, idx, opts, rootDiv);
+    }
+    render() {
+        make_numeric(this.qa, this.outerqDiv, this.qDiv, this.aDiv, this.id);
+        this.wrapper.appendChild(this.fbDiv);
+    }
+}
+Question.register('numeric', NumericQuestion);
 
 function isValid(el, charC) {
     //console.log("Input char: ", charC);

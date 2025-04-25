@@ -24,6 +24,17 @@ function levenshteinDistance(a, b) {
     }
     return matrix[b.length][a.length];
 }
+// Object-oriented wrapper for string input questions
+class StringQuestion extends Question {
+    constructor(qa, id, idx, opts, rootDiv) {
+        super(qa, id, idx, opts, rootDiv);
+    }
+    render() {
+        make_string(this.qa, this.outerqDiv, this.qDiv, this.aDiv, this.id);
+        this.wrapper.appendChild(this.fbDiv);
+    }
+}
+Question.register('string', StringQuestion);
 
 function check_string(ths, event) {
     if (event.keyCode === 13) {
@@ -63,7 +74,13 @@ function check_string(ths, event) {
                 done = true;
             } else if (answer.fuzzy_threshold) {
                 var max_length = Math.max(submission.length, answer.answer.length);
-                var ratio = 1- (levenshteinDistance(submission, answer.answer) / max_length);
+                var ratio;
+                if (answer.match_case) {
+                    ratio = 1- (levenshteinDistance(submission, answer.answer) / max_length);
+                } else {
+                    ratio = 1- (levenshteinDistance(submission.toLowerCase(),
+                                                    answer.answer.toLowerCase()) / max_length);
+                }
                 if (ratio >= answer.fuzzy_threshold) {
                     if ("feedback" in answer) {
                         fb.innerHTML = jaxify("(Fuzzy) " + answer.feedback);
