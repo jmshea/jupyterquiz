@@ -34,7 +34,7 @@ modern, interactive textbooks**.
 
 If you would like to see a video that introduces these tools and discusses *why* I made them, check out my [JupyterCon 2023 talk on Tools for Interactive Education Experiences in Jupyter Notebooks and Jupyter Books](https://www.youtube.com/watch?v=MDMUiQ2_ZWE).
 
-These animated GIFs illustrate the two basic question types in *JupyterQuiz*:
+These animated GIFs illustrate two of the basic question types in *JupyterQuiz* (a third String type of question was added in April 2025, and I have not created an animated GIF for it yet):
 
 **Many Choice Question**
 
