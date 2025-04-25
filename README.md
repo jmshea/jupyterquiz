@@ -34,7 +34,7 @@ modern, interactive textbooks**.
 
 If you would like to see a video that introduces these tools and discusses *why* I made them, check out my [JupyterCon 2023 talk on Tools for Interactive Education Experiences in Jupyter Notebooks and Jupyter Books](https://www.youtube.com/watch?v=MDMUiQ2_ZWE).
 
-These animated GIFs illustrate the two basic question types in *JupyterQuiz*:
+These animated GIFs illustrate two of the basic question types in *JupyterQuiz* (a third String type of question was added in April 2025, and I have not created an animated GIF for it yet):
 
 **Many Choice Question**
 
@@ -156,7 +156,7 @@ Multiple/Many Choice questions are defined by a Question, an optional Code block
 
 
 Example JSON for a many-choice question is below:
-```
+```json
   {
         "question": "Choose all of the following that can be included in Jupyter notebooks?",
         "type": "many_choice",
@@ -199,7 +199,7 @@ Numerical questions consist of a Question, an optional Precision, and one or mor
   \* = Required parameter
   
   Example JSON for a numerical question is below:
-```
+```json
   {
         "question": "Enter the value of pi (will be checked to 2 decimal places):",
         "type": "numeric",
@@ -233,13 +233,13 @@ Numerical questions consist of a Question, an optional Precision, and one or mor
 
 ## String Questions
 
-String questions consist of a Question and an Answers array. Each Answer in the Answers array isan object that consists of an "answer" (string), a boolean called "correct", and several optional properties. By default answers case is ignored in comparing submissions to the Answers; however, this can be changed using the boolean "match_case" property. Each answer can have a string "feedback" that is displayed when this answer is matched. Fuzzy matching can be used by specifying a value for the "fuzzy_threshold" property, which should take values between 0 and 1. Fuzzy matching calculates the Levenshtein distance, dividing that by the string length, and then subtracting the result from 1. The resulting value is 1 when the strings match exactly and decreases when the strings are more different. The schema for String Questions is shown below:
+String questions are specified by setting the "type" property to "string". These questions offer a single question prompt that is specified by the "question" property, but may have multiple possible answers specified by the Answers array. Each Answer in the Answers array is an object that consists of an "answer" (string), a Boolean called "correct", and several optional properties. By default answers case is ignored in comparing submissions to the Answers; however, this can be changed using the boolean "match_case" property. Each answer can have a string "feedback" that is displayed when this answer is matched. Fuzzy matching can be used by specifying a value for the "fuzzy_threshold" property, which should take values between 0 and 1. Fuzzy matching calculates the Levenshtein distance, dividing that by the string length, and then subtracting the result from 1. The resulting value is 1 when the strings match exactly and decreases when the strings are more different. The schema for String Questions is shown below:
 
 ![Schema for String Questions](schema/string_schema.png)
 
 Example JSON for a string question is below:
 ```json
-example_string = [{
+{
     "question": "Who was the 35th president (1961-63) of the US?",
     "type": "string",
     "answers": [
@@ -262,7 +262,7 @@ example_string = [{
             "match_case": false
         }
     ]
-}]
+}
 ```
 
 ## Working with JupyterLite
