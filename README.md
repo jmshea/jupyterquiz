@@ -231,6 +231,40 @@ Numerical questions consist of a Question, an optional Precision, and one or mor
     }
 ```
 
+## String Questions
+
+String questions consist of a Question and an Answers array. Each Answer in the Answers array isan object that consists of an "answer" (string), a boolean called "correct", and several optional properties. By default answers case is ignored in comparing submissions to the Answers; however, this can be changed using the boolean "match_case" property. Each answer can have a string "feedback" that is displayed when this answer is matched. Fuzzy matching can be used by specifying a value for the "fuzzy_threshold" property, which should take values between 0 and 1. Fuzzy matching calculates the Levenshtein distance, dividing that by the string length, and then subtracting the result from 1. The resulting value is 1 when the strings match exactly and decreases when the strings are more different. The schema for String Questions is shown below:
+
+![Schema for String Questions](schema/string_schema.png)
+
+Example JSON for a string question is below:
+```json
+example_string = [{
+    "question": "Who was the 35th president (1961-63) of the US?",
+    "type": "string",
+    "answers": [
+        {
+            "answer": "John F. Kennedy",
+            "correct": true,
+            "feedback": "Correct. John F. Kennedy was the 35th president of the U.S.",
+            "match_case": false,
+            "fuzzy_threshold": 0.80
+        },
+        {
+            "answer": "JFK",
+            "correct": true,
+            "feedback": "Correct. John F. Kennedy was the 35th president of the U.S."
+        },
+        {
+            "answer": "Kennedy",
+            "correct": false,
+            "feedback": "Please also provide the first name.",
+            "match_case": false
+        }
+    ]
+}]
+```
+
 ## Working with JupyterLite
 
 This should work with JupyterLite as of version 2.1.2. Here is an example that should work on JupyterLite:
@@ -248,5 +282,3 @@ display_quiz(git_url+'ch1.json')
 
 
 **As an Amazon Associate I earn from qualifying purchases.**
-
-
