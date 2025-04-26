@@ -11,5 +11,5 @@ for the book Foundations of Data Science with Python: https://fdsp.net
 All files in the package are distributed under the MIT License
 '''
 
-__version__ = '2.9.2.1'
+__version__ = '2.9.3'
 from .dynamic import display_quiz, capture_responses
