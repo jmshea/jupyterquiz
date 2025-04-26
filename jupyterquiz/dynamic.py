@@ -198,26 +198,12 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False, shuffle_answers=Tr
     #display(HTML(mydiv + script))
     # return
 
-    # print(__name__)
-    f = importlib.resources.files(package).joinpath('helpers.js')
-    helpers=f.read_bytes()
-    script += helpers.decode('utf-8')
-
-    f = importlib.resources.files(package).joinpath('multiple_choice.js')
-    multiple_choice = f.read_bytes()
-    script += multiple_choice.decode("utf-8")
-
-    f = importlib.resources.files(package).joinpath('numeric.js')
-    numeric = f.read_bytes()
-    script += numeric.decode("utf-8")
-
-    f = importlib.resources.files(package).joinpath('string.js')
-    string_js = f.read_bytes()
-    script += string_js.decode("utf-8")
-
-    f = importlib.resources.files(package).joinpath('show_questions.js')
-    show_questions = f.read_bytes()
-    script += show_questions.decode("utf-8")
+    # Add all JavaScript files from js directory
+    js_dir = importlib.resources.files(package).joinpath('js')
+    for js_file in sorted(js_dir.iterdir(), key=lambda x: x.name):
+        if js_file.name.endswith('.js'):
+            # print(js_file.name)
+            script += js_file.read_bytes().decode('utf-8')
 
     script += f'''/* This is to handle asynchrony issues in loading Jupyter notebooks
            where the quiz has been previously run. The Javascript was generally
