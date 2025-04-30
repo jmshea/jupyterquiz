@@ -39,7 +39,7 @@ def build_styles(div_id, color_dict):
     styles += '</style>'
     return styles
 
-def build_script(prefix_script, static, url, div_id):
+def build_script(prefix_script, static, url, div_id, load_js):
     """
     Combine the loading prefix, static JS files, and suffix template into a single script.
     """
@@ -48,10 +48,11 @@ def build_script(prefix_script, static, url, div_id):
     script = prefix_script
 
     # Load all static JS modules
-    js_dir = importlib.resources.files(package).joinpath('js')
-    for js_file in sorted(js_dir.iterdir(), key=lambda x: x.name):
-        if js_file.name.endswith('.js'):
-            script += js_file.read_bytes().decode('utf-8')
+    if load_js:
+        js_dir = importlib.resources.files(package).joinpath('js')
+        for js_file in sorted(js_dir.iterdir(), key=lambda x: x.name):
+            if js_file.name.endswith('.js'):
+                script += js_file.read_bytes().decode('utf-8')
 
     # Append appropriate suffix behavior
     if static:

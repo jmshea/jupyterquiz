@@ -11,7 +11,7 @@ from .renderer import render_div, build_styles, build_script
 def display_quiz(ref, num=1_000_000, shuffle_questions=False,
                  shuffle_answers=True, preserve_responses=False,
                  border_radius=10, question_alignment="left",
-                 max_width=600, colors=None):
+                 max_width=600, colors=None, load_js=True):
     """
     Display an interactive quiz in a Jupyter notebook.
 
@@ -75,7 +75,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False,
     styles = build_styles(div_id, color_dict)
 
     # Combine all JavaScript
-    javascript = build_script(prefix_script, static, url, div_id)
+    javascript = build_script(prefix_script, static, url, div_id, load_js)
 
     # Display in notebook
     display(HTML(mydiv + styles))
