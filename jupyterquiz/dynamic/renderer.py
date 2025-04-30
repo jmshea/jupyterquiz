@@ -64,4 +64,9 @@ def build_script(prefix_script, static, url, div_id, load_js):
         tpl = tpl_path.read_text()
         script += Template(tpl).substitute(url=url, div_id=div_id)
 
+    # Append the final script
+    script += '\n}\n'
+
+
+
     return script

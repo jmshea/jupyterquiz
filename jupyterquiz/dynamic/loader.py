@@ -66,5 +66,5 @@ def load_questions_script(ref, div_id):
     else:
         raise Exception("First argument must be list, URL, or file ref")
     # Terminate statement
-    script += ";\n"
+    script += ";\n\nif (typeof Question === 'undefined') {\n"
     return script, static, url
