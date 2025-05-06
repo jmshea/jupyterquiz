@@ -26,7 +26,7 @@ function jaxify(string) {
         loc2 = mystring.search(/([^\\]|^)(\$\$)/);
     }
     // Replace markdown links
-    mystring = mystring.replace(/<(.*?)>/g, '<a href="$1" target="_blank" class="Link">$1</a>');
+    mystring = mystring.replace(/<http(.*?)>/g, '<a href="http$1" target="_blank" class="Link">http$1</a>');
     mystring = mystring.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" class="Link">$1</a>');
     return mystring;
 }
