@@ -204,7 +204,7 @@ function check_mc() {
 function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
 
     var shuffled;
-    if (shuffle_answers == "True") {
+    if (shuffle_answers == true) {
         //console.log(shuffle_answers+" read as true");
         shuffled = getRandomSubarray(qa.answers, qa.answers.length);
     } else {
@@ -283,6 +283,7 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
 class MCQuestion extends Question {
     constructor(qa, id, idx, opts, rootDiv) { super(qa, id, idx, opts, rootDiv); }
     render() {
+        //console.log("options.shuffleAnswers " + this.options.shuffleAnswers);
         const numCorrect = make_mc(
             this.qa,
             this.options.shuffleAnswers,
