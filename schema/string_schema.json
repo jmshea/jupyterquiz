@@ -18,7 +18,12 @@
         },
         "answers": {
             "type": "array",
-	          "items": { "$ref": "#/$defs/possible_answer" }
+            "items": { "$ref": "#/$defs/possible_answer" }
+        },
+        "input_width": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Approximate width of the input text field in number of characters (applied in em units)"
         }
     },
     "$defs": {

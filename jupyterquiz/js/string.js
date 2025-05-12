@@ -175,6 +175,10 @@ function make_string(qa, outerqDiv, qDiv, aDiv, id) {
     inp.id = id + "-0";
     inp.className = "Input-text";
     inp.setAttribute('data-answers', JSON.stringify(qa.answers));
+    // Apply optional input width (approx. number of characters, in em units)
+    if (qa.input_width != null) {
+        inp.style['min-width'] = qa.input_width + 'em';
+    }
     aDiv.append(inp);
 
     inp.onkeypress = string_keypress;

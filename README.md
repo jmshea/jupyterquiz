@@ -237,6 +237,8 @@ String questions are specified by setting the "type" property to "string". These
 
 You can optionally include a default answer pattern by specifying an object with a "type" property set to "default" and a "feedback" string. If no other answer patterns match the user's submission, the question will be marked incorrect and the provided feedback will be displayed.
 
+You can also specify an `input_width` property (integer, approximate number of characters) on the question to control the width of the text input field (in em units) in the rendered quiz.
+
 The schema for String Questions is shown below:
 
 ![Schema for String Questions](schema/string_schema.png)

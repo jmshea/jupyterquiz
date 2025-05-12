@@ -75,7 +75,10 @@
     display: block;
     margin: 10px;
     color: inherit;
-    width: 140px;
+    width: unset;
+    min-width: 140px;
+    max-width: 93%;
+    field-sizing: content;
     background-color: var(--jq-numeric-input-bg);
     color: var(--jq-text-color);
     padding: 5px;
