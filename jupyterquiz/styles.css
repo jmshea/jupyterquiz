@@ -141,6 +141,18 @@
     color: inherit;
 }
 
+.StringQn {
+    background: var(--jq-string-bg);
+    border-radius: inherit;
+    color: var(--jq-text-color);
+    padding: 10px;
+}
+
+.StringQn p {
+    color: inherit;
+}
+
+
 .InpLabel {
     color: var(--jq-numeric-input-label);
     float: left;
