@@ -51,6 +51,17 @@ function check_string(ths, event) {
         var correct;
         var done = false;
 
+        // Handle default answer pattern: filter out and capture default feedback
+        var filteredAnswers = [];
+        answers.forEach(answer => {
+            if (answer.type === "default") {
+                defaultFB = answer.feedback;
+            } else {
+                filteredAnswers.push(answer);
+            }
+        });
+        answers = filteredAnswers;
+
         answers.every(answer => {
             correct = false;
 
