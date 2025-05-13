@@ -23,6 +23,9 @@
                     "correct": {
                         "type": "boolean"
                     },
+                    "hide": {
+                        "type": "boolean"
+                    },
                     "feedback": {
                         "type": "string"
                     },

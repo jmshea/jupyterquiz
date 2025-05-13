@@ -43,6 +43,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False,
         '--jq-numeric-input-shadow': '#999999',
         '--jq-string-bg': '#4c1a57',
         '--jq-incorrect-color': '#c80202',
+        '--jq-select-color': '#6f78ff',
         '--jq-correct-color': '#009113',
         '--jq-text-color': '#fafafa'
     }
