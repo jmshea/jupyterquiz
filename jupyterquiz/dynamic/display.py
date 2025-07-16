@@ -32,7 +32,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False,
 
     # Default color palette
     color_dict = {
-        '--jq-multiple-choice-bg': '#6f78ffff',
+        '--jq-multiple-choice-bg': '#392061',
         '--jq-mc-button-bg': '#fafafa',
         '--jq-mc-button-border': '#e0e0e0e0',
         '--jq-mc-button-inset-shadow': '#555555',
