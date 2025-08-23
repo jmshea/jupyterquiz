@@ -43,6 +43,11 @@
 }
 
 
+.Quiz .JQLink {
+    color: var(--jq-link-color) !important;
+    text-decoration: underline;
+}
+
 
 
 .Answer {
