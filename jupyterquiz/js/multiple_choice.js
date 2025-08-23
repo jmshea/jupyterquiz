@@ -218,31 +218,31 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
     shuffled.forEach((item, index, ans_array) => {
         //console.log(answer);
 
-        // Make input element
-        var inp = document.createElement("input");
-        inp.type = "radio";
-        inp.id = "quizo" + id + index;
-        inp.style = "display:none;";
-        aDiv.append(inp);
-
-        //Make label for input element
+        // Make label for input element
         var lab = document.createElement("label");
         lab.className = "MCButton";
         lab.id = id + '-' + index;
         lab.onclick = check_mc;
+
+        // Make input element
+        var inp = document.createElement("input");
+        inp.type = "radio";
+        inp.id = "quizo" + id + index;
+        inp.name = "mcgroup-" + id; // for grouping radios
+        inp.className = "sr-only"; // or "visually-hidden" or whatever you call it
+
+
+        lab.append(inp); // input is now inside the label
+
         var aSpan = document.createElement('span');
-        aSpan.classsName = "";
-        //qDiv.id="quizQn"+id+index;
         if ("answer" in item) {
             aSpan.innerHTML = jaxify(item.answer);
-            //aSpan.innerHTML=item.answer;
         }
         lab.append(aSpan);
 
         // Create div for code inside question
-        var codeSpan;
         if ("code" in item) {
-            codeSpan = document.createElement('span');
+            var codeSpan = document.createElement('span');
             codeSpan.id = "code" + id + index;
             codeSpan.className = "QuizCode";
             var codePre = document.createElement('pre');
@@ -251,10 +251,7 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
             codePre.append(codeCode);
             codeCode.innerHTML = item.code;
             lab.append(codeSpan);
-            //console.log(codeSpan);
         }
-
-        //lab.textContent=item.answer;
 
         // Set the data attributes for the answer
         lab.setAttribute('data-correct', item.correct);
@@ -266,7 +263,9 @@ function make_mc(qa, shuffle_answers, outerqDiv, qDiv, aDiv, id) {
         }
         lab.setAttribute('data-answered', 0);
 
+        // Only append the label (input is inside)
         aDiv.append(lab);
+
 
     });
 

@@ -32,7 +32,7 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False,
 
     # Default color palette
     color_dict = {
-        '--jq-multiple-choice-bg': '#6f78ffff',
+        '--jq-multiple-choice-bg': '#392061',
         '--jq-mc-button-bg': '#fafafa',
         '--jq-mc-button-border': '#e0e0e0e0',
         '--jq-mc-button-inset-shadow': '#555555',
@@ -44,7 +44,8 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False,
         '--jq-string-bg': '#4c1a57',
         '--jq-incorrect-color': '#c80202',
         '--jq-correct-color': '#009113',
-        '--jq-text-color': '#fafafa'
+        '--jq-text-color': '#fafafa',
+        '--jq-link-color': '#9abafa'
     }
     # Alternative palette
     fdsp_dict = {
@@ -60,7 +61,8 @@ def display_quiz(ref, num=1_000_000, shuffle_questions=False,
         '--jq-string-bg': '#861657',
         '--jq-incorrect-color': '#666666',
         '--jq-correct-color': '#87a878',
-        '--jq-text-color': '#fafafa'
+        '--jq-text-color': '#fafafa',
+        '--jq-link-color': '#9abafa'
     }
     if colors == 'fdsp':
         color_dict = fdsp_dict
