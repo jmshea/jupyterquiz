@@ -48,6 +48,9 @@ These animated GIFs illustrate two of the basic question types in *JupyterQuiz* 
 
 ---
 
+**String Questions**
+![Example string question using JupyterQuiz.](https://github.com/jmshea/jupyterquiz/blob/main/examples/string.gif?raw=true)
+
 **Examples using JupyterQuiz**
 
 This library was built to create interactive questions for the  [*Foundations of Data Science with Python*](https://www.amazon.com/Foundations-Data-Science-Python-Chapman/dp/1032350423) book by John M. Shea. Example: [Chapter 3 Self-Assessment Questions](https://www.fdsp.net/03-first-data/summary.html#terminology-review)
