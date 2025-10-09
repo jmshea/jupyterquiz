@@ -205,68 +205,65 @@
     }
 }
 
-/* Drag and Drop Matching Question Styles */
-
-.DragDropQn {
+/* Matching Question Styles */
+.MatchQn {
     padding: 10px;
-    background: var(--jq-drag-drop-bg);
+    background: var(--jq-match-bg);
     color: var(--jq-text-color);
     border-radius: inherit;
 }
 
-.DragDropQn p {
+.MatchQn p {
     color: inherit;
 }
 
 /* Critical: Override the grid layout from .Answer */
-.DragDropQn .Answer,
-.DragDropAnswer {
-    display: block !important;
-    grid-template-columns: none !important;
-    grid-template-rows: none !important;
-    gap: 0 !important;
-    grid: none !important;
-    margin: 10px 0; /* Keep the margin from original .Answer */
+.MatchQn .Answer,
+.MatchAns {
+    display: block;
+    gap: 0;
+    grid: none;
 }
 
-.DragDropMainContainer {
+.MatchMainContainer {
     display: block;
     width: 100%;
+    border-radius: inherit;
 }
 
-.DragDropLabels {
+.MatchLabels {
     margin-bottom: 20px;
     width: 100%;
     display: block;
     clear: both;
+    border-radius: inherit;
 }
 
-.DragDropLabelRow {
+.MatchLabelRow {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
     width: 100%;
     box-sizing: border-box;
+    border-radius: inherit;
+    gap: 15px;
 }
 
-.DragDropLabel {
-    flex: 0 0 70%;
+.MatchLabel {
+    flex: 2;
     font-size: 16px;
-    padding: 10px; /* Match MCButton padding exactly */
-    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    background: var(--jq-mc-button-bg);
+    border: 1px solid var(--jq-mc-button-border);
     border-radius: inherit;
     min-height: 20px;
     box-sizing: border-box;
-    color: inherit;
+    color: #333333;
 }
 
 .DropZone {
-    /* Exact MCButton styling with drag-specific modifications */
-    background: var(--jq-mc-button-bg);
-    border: 1px solid var(--jq-mc-button-border);
-    border-style: dashed;
+    border: 2px dashed var(--jq-mc-button-border);
     border-radius: inherit;
-    color: #333333;
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
@@ -274,56 +271,58 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    /* Drag-specific layout properties */
-    flex: 0 0 30%;
+    opacity: 0.8;
+    flex: 1;
     min-height: 40px;
     transition: all 0.3s ease;
     box-sizing: border-box;
 }
 
 .DropZone.dragover {
-    border-color: var(--jq-correct-color);
     border-style: solid;
-    background-color: rgba(0, 145, 19, 0.1);
     transform: scale(1.02);
 }
 
 .DropZone.filled {
-    border-style: solid;
     background: var(--jq-mc-button-bg);
     color: #333333;
+    border-style: solid;
+    opacity: 1;
 }
 
 .DropZone.correct {
     border-color: var(--jq-correct-color);
+    border-style: solid;
     background-color: rgba(0, 145, 19, 0.2);
     color: var(--jq-correct-color);
+    opacity: 1;
 }
 
 .DropZone.incorrect {
     border-color: var(--jq-incorrect-color);
     background-color: rgba(200, 2, 2, 0.2);
     color: var(--jq-incorrect-color);
+    opacity: 1;
 }
 
 
-.DragDropOptions {
+.MatchOptions {
     padding-top: 15px;
     width: 100%;
     display: block;
     clear: both;
     box-sizing: border-box;
+    border-radius: inherit;
 }
 
-.DragDropTitle {
+.MatchTitle {
     font-size: 16px;
     margin-bottom: 15px;
     color: inherit;
     text-align: left;
 }
 
-.DragDropOption {
+.MatchOption {
     /* Style to match MCButton */
     background: var(--jq-mc-button-bg);
     border: 1px solid var(--jq-mc-button-border);
@@ -346,55 +345,43 @@
     vertical-align: top;
 }
 
-.DragDropOption p {
+.MatchOption p {
     color: inherit;
     margin: 0;
 }
 
-.DragDropOption:hover {
+.MatchOption:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.DragDropOption.dragging {
+.MatchOption.dragging {
     opacity: 0.5;
     cursor: grabbing;
 }
 
-.DragDropOption.selected {
+.MatchOption.selected {
     background-color: var(--jq-correct-color, #0091cc);
     color: var(--jq-text-color, white);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Code styling within drag drop elements */
-.DragDropQn code {
-    background-color: lightgray;
-    color: black;
-}
-
-.DragDropOption code,
-.DropZone code,
-.DragDropLabel code {
-    background-color: inherit;
-    color: inherit;
-}
 
 /* Mobile support for drag drop */
 @media only screen and (max-width: 480px) {
-    .DragDropLabelRow {
+    .MatchLabelRow {
         flex-direction: column;
         align-items: stretch;
     }
     
-    .DragDropLabel,
+    .MatchLabel,
     .DropZone {
         flex: none;
         width: 100%;
     }
     
-    .DragDropOption {
+    .MatchOption {
         display: flex;
         margin: 5px 0;
         width: calc(100% - 10px);
@@ -407,22 +394,16 @@
 }
 
 /* Additional specificity to ensure layout overrides work */
-.Quiz .Question .DragDropQn .Answer,
-.Quiz .Question .DragDropQn .DragDropAnswer {
+.Quiz .Question .MatchQn .Answer,
+.Quiz .Question .MatchQn .MatchAns {
     display: block !important;
     grid: none !important;
     grid-template-columns: none !important;
 }
 
-.Quiz .Question .DragDropQn .DragDropLabels,
-.Quiz .Question .DragDropQn .DragDropOptions {
+.Quiz .Question .MatchQn .MatchLabels,
+.Quiz .Question .MatchQn .MatchOptions {
     width: 100%;
     display: block;
     position: relative;
-}
-
-/* Ensure proper text color inheritance */
-.DragDropQn .DragDropLabel,
-.DragDropQn .DragDropTitle {
-    color: var(--jq-text-color);
 }

@@ -1,6 +1,5 @@
 // Drag and Drop Matching Question Implementation
-
-class DragDropQuestion extends Question {
+class MatchQuestion extends Question {
     constructor(qa, id, idx, opts, rootDiv) {
         super(qa, id, idx, opts, rootDiv);
         this.matches = {};
@@ -16,16 +15,16 @@ class DragDropQuestion extends Question {
 
     render() {
         // Set main container class
-        this.outerqDiv.className = "DragDropQn";
+        this.outerqDiv.className = "MatchQn";
         
         // Override Answer div to use block layout
         if (this.aDiv) {
-            this.aDiv.className = 'Answer DragDropAnswer';
+            this.aDiv.className = 'Answer MatchAns';
         }
         
         // Validate required data
         if (!this.qa.pairs || !this.qa.options) {
-            console.error('DragDropQuestion requires "pairs" and "options" properties');
+            console.error('MatchQuestion requires "pairs" and "options" properties');
             this.fbDiv.innerHTML = 'Error: Invalid question format';
             this.fbDiv.className = 'Feedback incorrect';
             this.wrapper.appendChild(this.fbDiv);
@@ -37,11 +36,11 @@ class DragDropQuestion extends Question {
         
         // Create main container
         const mainContainer = document.createElement('div');
-        mainContainer.className = 'DragDropMainContainer';
+        mainContainer.className = 'MatchMainContainer';
         
         // Create labels container
         const labelsDiv = document.createElement('div');
-        labelsDiv.className = 'DragDropLabels';
+        labelsDiv.className = 'MatchLabels';
 
         // Get shuffled pairs and options
         let pairs = this.qa.pairs.slice();
@@ -57,10 +56,10 @@ class DragDropQuestion extends Question {
         // Create label rows with drop zones
         pairs.forEach((pair, index) => {
             const labelRow = document.createElement('div');
-            labelRow.className = 'DragDropLabelRow';
+            labelRow.className = 'MatchLabelRow';
             
             const labelText = document.createElement('div');
-            labelText.className = 'DragDropLabel';
+            labelText.className = 'MatchLabel';
             labelText.innerHTML = jaxify(pair.label);
             
             const dropZone = document.createElement('div');
@@ -78,17 +77,17 @@ class DragDropQuestion extends Question {
 
         // Create options container
         const optionsDiv = document.createElement('div');
-        optionsDiv.className = 'DragDropOptions';
+        optionsDiv.className = 'MatchOptions';
         
         const titleDiv = document.createElement('div');
-        titleDiv.className = 'DragDropTitle';
-        titleDiv.innerHTML = 'Drag the options below to match with the labels:';
+        titleDiv.className = 'MatchTitle';
+        titleDiv.innerHTML = 'Drag the options to match with the items:';
         optionsDiv.appendChild(titleDiv);
         
         // Create draggable options
         options.forEach((option, index) => {
             const optionEl = document.createElement('div');
-            optionEl.className = 'DragDropOption';
+            optionEl.className = 'MatchOption';
             optionEl.draggable = true;
             optionEl.dataset.option = option;
             optionEl.innerHTML = jaxify(option);
@@ -123,7 +122,7 @@ class DragDropQuestion extends Question {
                 this.selectedOption = null;
             } else {
                 // Clear other selections
-                this.aDiv.querySelectorAll('.DragDropOption.selected').forEach(el => {
+                this.aDiv.querySelectorAll('.MatchOption.selected').forEach(el => {
                     el.classList.remove('selected');
                 });
                 element.classList.add('selected');
@@ -155,7 +154,7 @@ class DragDropQuestion extends Question {
             if (this.selectedOption) {
                 this.placeOptionInDropZone(this.selectedOption, dropZone);
                 // Clear selection
-                this.aDiv.querySelectorAll('.DragDropOption.selected').forEach(el => {
+                this.aDiv.querySelectorAll('.MatchOption.selected').forEach(el => {
                     el.classList.remove('selected');
                 });
                 this.selectedOption = null;
@@ -167,7 +166,7 @@ class DragDropQuestion extends Question {
                     dropZone.innerHTML = 'Drop here';
                     dropZone.classList.remove('filled', 'correct', 'incorrect');
                     delete this.matches[label];
-                    this.updateFeedback();
+                    this.checkAllMatches();
                     this.preserveResponse(Object.assign({}, this.matches));
                 }
             }
@@ -184,7 +183,7 @@ class DragDropQuestion extends Question {
         
         // Remove option from pool
         const optionEl = this.aDiv.querySelector(`[data-option="${option}"]`);
-        if (optionEl && optionEl.parentElement.classList.contains('DragDropOptions')) {
+        if (optionEl && optionEl.parentElement.classList.contains('MatchOptions')) {
             optionEl.remove();
         }
         
@@ -195,15 +194,16 @@ class DragDropQuestion extends Question {
         // Update matches
         this.matches[label] = option;
         
-        this.checkMatch(label, option, dropZone);
+        // Remove immediate feedback - only check if all matches are complete
+        this.checkAllMatches();
         this.preserveResponse(Object.assign({}, this.matches));
     }
 
     returnOptionToPool(option) {
-        const optionsDiv = this.aDiv.querySelector('.DragDropOptions');
+        const optionsDiv = this.aDiv.querySelector('.MatchOptions');
         if (optionsDiv) {
             const optionEl = document.createElement('div');
-            optionEl.className = 'DragDropOption';
+            optionEl.className = 'MatchOption';
             optionEl.draggable = true;
             optionEl.dataset.option = option;
             optionEl.innerHTML = jaxify(option);
@@ -212,18 +212,33 @@ class DragDropQuestion extends Question {
         }
     }
 
-    checkMatch(label, option, dropZone) {
-        const isCorrect = this.correctMatches[label] === option;
-        
-        if (isCorrect) {
-            dropZone.classList.add('correct');
-            dropZone.classList.remove('incorrect');
+    checkAllMatches() {
+        // Only show feedback when all pairs have been matched
+        if (Object.keys(this.matches).length === Object.keys(this.correctMatches).length) {
+            // All matches complete, now show correct/incorrect feedback
+            Object.keys(this.matches).forEach(label => {
+                const dropZone = this.aDiv.querySelector(`[data-label="${label}"]`);
+                if (dropZone) {
+                    const isCorrect = this.correctMatches[label] === this.matches[label];
+                    if (isCorrect) {
+                        dropZone.classList.add('correct');
+                        dropZone.classList.remove('incorrect');
+                    } else {
+                        dropZone.classList.add('incorrect');
+                        dropZone.classList.remove('correct');
+                    }
+                }
+            });
+            this.updateFeedback();
         } else {
-            dropZone.classList.add('incorrect');
-            dropZone.classList.remove('correct');
+            // Clear any existing feedback classes while matching is incomplete
+            Object.keys(this.matches).forEach(label => {
+                const dropZone = this.aDiv.querySelector(`[data-label="${label}"]`);
+                if (dropZone) {
+                    dropZone.classList.remove('correct', 'incorrect');
+                }
+            });
         }
-
-        this.updateFeedback();
     }
 
     updateFeedback() {
@@ -249,4 +264,4 @@ class DragDropQuestion extends Question {
 }
 
 // Register the question type
-Question.register('drag_drop', DragDropQuestion);
+Question.register('match', MatchQuestion);
