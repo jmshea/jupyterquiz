@@ -242,20 +242,25 @@ class MatchQuestion extends Question {
     }
 
     updateFeedback() {
-        // Check if all matches are complete and correct
         const allMatched = Object.keys(this.correctMatches).every(label => 
             this.matches[label] && this.correctMatches[label] === this.matches[label]
         );
 
         if (allMatched && Object.keys(this.matches).length === Object.keys(this.correctMatches).length) {
-            this.fbDiv.innerHTML = "Excellent! All matches are correct!";
+            // Use custom feedback if available
+            const message = this.qa.feedback?.correct || "Excellent! All matches are correct!";
+            this.fbDiv.innerHTML = jaxify(message);
             this.fbDiv.className = "Feedback correct";
         } else {
             const correctCount = Object.keys(this.correctMatches).filter(label => 
                 this.matches[label] && this.correctMatches[label] === this.matches[label]
             ).length;
             
-            this.fbDiv.innerHTML = `${correctCount}/${Object.keys(this.correctMatches).length} correct matches`;
+            // Use custom partial feedback with template substitution
+            let message = this.qa.feedback?.incorrect || `${correctCount}/${Object.keys(this.correctMatches).length} correct matches`;
+            message = message.replace('{correct}', correctCount).replace('{total}', Object.keys(this.correctMatches).length);
+            
+            this.fbDiv.innerHTML = jaxify(message);
             this.fbDiv.className = "Feedback";
         }
 
