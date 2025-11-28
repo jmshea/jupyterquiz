@@ -67,9 +67,10 @@ If you using JupyterQuiz in a Jupyter Book or other way that is useable on the w
 
 The notebook [test.ipynb](test.ipynb) shows more features but must be run on your own local Jupyter or in nbviewer -- GitHub only renders the static HTML that does not include the interactive quizzes. (If viewing on GitHub, there should be a little circle with a minus sign at the top of the file that offers you the ability to launch the notebook in nbviewer.)
 
-It currently supports two types of quiz questions:
+It currently supports three types of quiz questions:
 1. **Multiple/ Many Choice Questions:** Users are given a predefined set of choices and click on answer(s) they believe are correct.
 2. **Numerical:** Users are given a text box in which they can submit answers in decimal or fraction form.
+3. **String:** Users are given a text box in which they can submit answers in string form.
 
 Each type of question offers different ways to provide feedback to help users understand what they did wrong (or right).
 
