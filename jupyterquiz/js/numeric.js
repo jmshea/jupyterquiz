@@ -13,7 +13,7 @@ function check_numeric(ths, event) {
         }
         //console.log("Reader entered", submission);
 
-        if ("precision" in ths.dataset) {
+        if (("precision" in ths.dataset) && (ths.dataset.precision > 0)) {
             var precision = ths.dataset.precision;
             submission = Number(Number(submission).toPrecision(precision));
         }
