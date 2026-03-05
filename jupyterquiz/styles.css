@@ -204,3 +204,206 @@
         background-color: var(--jq-correct-color);
     }
 }
+
+/* Matching Question Styles */
+.MatchQn {
+    padding: 10px;
+    background: var(--jq-match-bg);
+    color: var(--jq-text-color);
+    border-radius: inherit;
+}
+
+.MatchQn p {
+    color: inherit;
+}
+
+/* Critical: Override the grid layout from .Answer */
+.MatchQn .Answer,
+.MatchAns {
+    display: block;
+    gap: 0;
+    grid: none;
+}
+
+.MatchMainContainer {
+    display: block;
+    width: 100%;
+    border-radius: inherit;
+}
+
+.MatchLabels {
+    margin-bottom: 20px;
+    width: 100%;
+    display: block;
+    clear: both;
+    border-radius: inherit;
+}
+
+.MatchLabelRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: inherit;
+    gap: 15px;
+}
+
+.MatchLabel {
+    flex: 2;
+    font-size: 16px;
+    padding: 10px;
+    background: var(--jq-mc-button-bg);
+    border: 1px solid var(--jq-mc-button-border);
+    border-radius: inherit;
+    min-height: 20px;
+    box-sizing: border-box;
+    color: #333333;
+}
+
+.DropZone {
+    border: 2px dashed var(--jq-mc-button-border);
+    border-radius: inherit;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    flex: 1;
+    min-height: 40px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.DropZone.dragover {
+    border-style: solid;
+    transform: scale(1.02);
+}
+
+.DropZone.filled {
+    background: var(--jq-mc-button-bg);
+    color: #333333;
+    border-style: solid;
+    opacity: 1;
+}
+
+.DropZone.correct {
+    border-color: var(--jq-correct-color);
+    border-style: solid;
+    background-color: rgba(0, 145, 19, 0.2);
+    color: var(--jq-correct-color);
+    opacity: 1;
+}
+
+.DropZone.incorrect {
+    border-color: var(--jq-incorrect-color);
+    background-color: rgba(200, 2, 2, 0.2);
+    color: var(--jq-incorrect-color);
+    opacity: 1;
+}
+
+
+.MatchOptions {
+    padding-top: 15px;
+    width: 100%;
+    display: block;
+    clear: both;
+    box-sizing: border-box;
+    border-radius: inherit;
+}
+
+.MatchTitle {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: inherit;
+    text-align: left;
+}
+
+.MatchOption {
+    /* Style to match MCButton */
+    background: var(--jq-mc-button-bg);
+    border: 1px solid var(--jq-mc-button-border);
+    border-radius: inherit;
+    color: #333333;
+    padding: 10px;
+    font-size: 16px;
+    cursor: grab;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Drag-specific styles */
+    margin: 5px;
+    user-select: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    min-width: 80px;
+    vertical-align: top;
+}
+
+.MatchOption p {
+    color: inherit;
+    margin: 0;
+}
+
+.MatchOption:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.MatchOption.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+.MatchOption.selected {
+    background-color: var(--jq-correct-color, #0091cc);
+    color: var(--jq-text-color, white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Mobile support for drag drop */
+@media only screen and (max-width: 480px) {
+    .MatchLabelRow {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .MatchLabel,
+    .DropZone {
+        flex: none;
+        width: 100%;
+    }
+    
+    .MatchOption {
+        display: flex;
+        margin: 5px 0;
+        width: calc(100% - 10px);
+        box-sizing: border-box;
+    }
+    
+    .DropZone {
+        min-height: 50px;
+    }
+}
+
+/* Additional specificity to ensure layout overrides work */
+.Quiz .Question .MatchQn .Answer,
+.Quiz .Question .MatchQn .MatchAns {
+    display: block !important;
+    grid: none !important;
+    grid-template-columns: none !important;
+}
+
+.Quiz .Question .MatchQn .MatchLabels,
+.Quiz .Question .MatchQn .MatchOptions {
+    width: 100%;
+    display: block;
+    position: relative;
+}
